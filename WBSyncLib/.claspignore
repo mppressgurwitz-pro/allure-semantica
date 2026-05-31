@@ -3,3 +3,4 @@ node_modules/**
 *.md
 .env
 .clasprc.json
+**/*.js
