@@ -1,0 +1,3208 @@
+{
+  "Ароматы для дома": {
+    "10096": {
+      "field_id": "10096",
+      "field_name_ru": "Цвет товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10097": {
+      "field_id": "10097",
+      "field_name_ru": "Название цвета",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10098": {
+      "field_id": "10098",
+      "field_name_ru": "Образец цвета",
+      "data_type": "ImageURL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10400": {
+      "field_id": "10400",
+      "field_name_ru": "Гарантия",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10711": {
+      "field_id": "10711",
+      "field_name_ru": "Спирт в составе",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11254": {
+      "field_id": "11254",
+      "field_name_ru": "Rich-контент JSON",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11650": {
+      "field_id": "11650",
+      "field_name_ru": "Количество заводских упаковок",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "12776": {
+      "field_id": "12776",
+      "field_name_ru": "Название аромата",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21837": {
+      "field_id": "21837",
+      "field_name_ru": "Озон.Видео: название",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21841": {
+      "field_id": "21841",
+      "field_name_ru": "Озон.Видео: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21845": {
+      "field_id": "21845",
+      "field_name_ru": "Озон.Видеообложка: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22232": {
+      "field_id": "22232",
+      "field_name_ru": "ТН ВЭД коды ЕАЭС",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22270": {
+      "field_id": "22270",
+      "field_name_ru": "Вид выпуска товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22273": {
+      "field_id": "22273",
+      "field_name_ru": "Озон.Видео: товары на видео",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22390": {
+      "field_id": "22390",
+      "field_name_ru": "Объединить в похожие товары",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23171": {
+      "field_id": "23171",
+      "field_name_ru": "#Хештеги",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23249": {
+      "field_id": "23249",
+      "field_name_ru": "Количество товара в УЕИ",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23342": {
+      "field_id": "23342",
+      "field_name_ru": "Назначение ароматизатора для дома",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23518": {
+      "field_id": "23518",
+      "field_name_ru": "Минимальное количество оптом",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4191": {
+      "field_id": "4191",
+      "field_name_ru": "Аннотация",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "allowed_html=br,ul,li"
+    },
+    "4383": {
+      "field_id": "4383",
+      "field_name_ru": "Вес товара, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4384": {
+      "field_id": "4384",
+      "field_name_ru": "Комплектация",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4385": {
+      "field_id": "4385",
+      "field_name_ru": "Гарантийный срок",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4389": {
+      "field_id": "4389",
+      "field_name_ru": "Страна-изготовитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "6392": {
+      "field_id": "6392",
+      "field_name_ru": "Объем, мл",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "6735": {
+      "field_id": "6735",
+      "field_name_ru": "Вид ароматизатора",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "6736": {
+      "field_id": "6736",
+      "field_name_ru": "Размещение ароматизатора/освежителя",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "6737": {
+      "field_id": "6737",
+      "field_name_ru": "Ароматизация",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8205": {
+      "field_id": "8205",
+      "field_name_ru": "Срок годности в днях",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8229": {
+      "field_id": "8229",
+      "field_name_ru": "Тип",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "85": {
+      "field_id": "85",
+      "field_name_ru": "Бренд",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8513": {
+      "field_id": "8513",
+      "field_name_ru": "Количество в упаковке, шт",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8789": {
+      "field_id": "8789",
+      "field_name_ru": "Название файла PDF",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8790": {
+      "field_id": "8790",
+      "field_name_ru": "Документ PDF",
+      "data_type": "URL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9048": {
+      "field_id": "9048",
+      "field_name_ru": "Название модели (для объединения в одну карточку)",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9944": {
+      "field_id": "9944",
+      "field_name_ru": "Аромат",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "TITLE_MANUAL": {
+      "field_id": "TITLE_MANUAL",
+      "field_name_ru": "Название товара",
+      "data_type": "String",
+      "max_length": 200,
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "≤27 симв/слово; без CAPS; без HTML; см. Техздание SEO OZON"
+    }
+  },
+  "Косметика для ухода": {
+    "10096": {
+      "field_id": "10096",
+      "field_name_ru": "Цвет товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10097": {
+      "field_id": "10097",
+      "field_name_ru": "Название цвета",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11254": {
+      "field_id": "11254",
+      "field_name_ru": "Rich-контент JSON",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11650": {
+      "field_id": "11650",
+      "field_name_ru": "Количество заводских упаковок",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "12393": {
+      "field_id": "12393",
+      "field_name_ru": "Бьюти-ингредиент",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "20975": {
+      "field_id": "20975",
+      "field_name_ru": "Аромат",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21837": {
+      "field_id": "21837",
+      "field_name_ru": "Озон.Видео: название",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21841": {
+      "field_id": "21841",
+      "field_name_ru": "Озон.Видео: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21845": {
+      "field_id": "21845",
+      "field_name_ru": "Озон.Видеообложка: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21899": {
+      "field_id": "21899",
+      "field_name_ru": "Форма выпуска",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22232": {
+      "field_id": "22232",
+      "field_name_ru": "ТН ВЭД коды ЕАЭС",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22273": {
+      "field_id": "22273",
+      "field_name_ru": "Озон.Видео: товары на видео",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22390": {
+      "field_id": "22390",
+      "field_name_ru": "Объединить в похожие товары",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23171": {
+      "field_id": "23171",
+      "field_name_ru": "#Хештеги",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23249": {
+      "field_id": "23249",
+      "field_name_ru": "Количество товара в УЕИ",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23487": {
+      "field_id": "23487",
+      "field_name_ru": "Производитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23518": {
+      "field_id": "23518",
+      "field_name_ru": "Минимальное количество оптом",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4191": {
+      "field_id": "4191",
+      "field_name_ru": "Аннотация",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "allowed_html=br,ul,li"
+    },
+    "4383": {
+      "field_id": "4383",
+      "field_name_ru": "Вес товара, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4386": {
+      "field_id": "4386",
+      "field_name_ru": "Упаковка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4389": {
+      "field_id": "4389",
+      "field_name_ru": "Страна-изготовитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8044": {
+      "field_id": "8044",
+      "field_name_ru": "Вес, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8048": {
+      "field_id": "8048",
+      "field_name_ru": "Способ применения",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8050": {
+      "field_id": "8050",
+      "field_name_ru": "Состав",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8163": {
+      "field_id": "8163",
+      "field_name_ru": "Объем, мл",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8170": {
+      "field_id": "8170",
+      "field_name_ru": "Применение",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8172": {
+      "field_id": "8172",
+      "field_name_ru": "Тип кожи",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8176": {
+      "field_id": "8176",
+      "field_name_ru": "Область использования",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8187": {
+      "field_id": "8187",
+      "field_name_ru": "Особенности состава",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8188": {
+      "field_id": "8188",
+      "field_name_ru": "Возрастной диапазон",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8189": {
+      "field_id": "8189",
+      "field_name_ru": "Вид набора",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8198": {
+      "field_id": "8198",
+      "field_name_ru": "SPF",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8205": {
+      "field_id": "8205",
+      "field_name_ru": "Срок годности в днях",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8229": {
+      "field_id": "8229",
+      "field_name_ru": "Тип",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "85": {
+      "field_id": "85",
+      "field_name_ru": "Бренд",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8730": {
+      "field_id": "8730",
+      "field_name_ru": "Назначение детской косметики",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8781": {
+      "field_id": "8781",
+      "field_name_ru": "Солнцезащитная косметика",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8789": {
+      "field_id": "8789",
+      "field_name_ru": "Название файла PDF",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8790": {
+      "field_id": "8790",
+      "field_name_ru": "Документ PDF",
+      "data_type": "URL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8962": {
+      "field_id": "8962",
+      "field_name_ru": "Единиц в одном товаре",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9048": {
+      "field_id": "9048",
+      "field_name_ru": "Название модели (для объединения в одну карточку)",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9070": {
+      "field_id": "9070",
+      "field_name_ru": "Признак 18+",
+      "data_type": "Boolean",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9163": {
+      "field_id": "9163",
+      "field_name_ru": "Пол",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9317": {
+      "field_id": "9317",
+      "field_name_ru": "Состав косметического набора",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9390": {
+      "field_id": "9390",
+      "field_name_ru": "Целевая аудитория",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9577": {
+      "field_id": "9577",
+      "field_name_ru": "Эффект от использования уходовой косметики",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9782": {
+      "field_id": "9782",
+      "field_name_ru": "Класс опасности товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "TITLE_MANUAL": {
+      "field_id": "TITLE_MANUAL",
+      "field_name_ru": "Название товара",
+      "data_type": "String",
+      "max_length": 200,
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "≤27 симв/слово; без CAPS; без HTML; см. Техздание SEO OZON"
+    }
+  },
+  "Косметика для ухода за волосами": {
+    "10096": {
+      "field_id": "10096",
+      "field_name_ru": "Цвет товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10097": {
+      "field_id": "10097",
+      "field_name_ru": "Название цвета",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10098": {
+      "field_id": "10098",
+      "field_name_ru": "Образец цвета",
+      "data_type": "ImageURL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11254": {
+      "field_id": "11254",
+      "field_name_ru": "Rich-контент JSON",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11650": {
+      "field_id": "11650",
+      "field_name_ru": "Количество заводских упаковок",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "12393": {
+      "field_id": "12393",
+      "field_name_ru": "Бьюти-ингредиент",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "12776": {
+      "field_id": "12776",
+      "field_name_ru": "Название аромата",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21837": {
+      "field_id": "21837",
+      "field_name_ru": "Озон.Видео: название",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21841": {
+      "field_id": "21841",
+      "field_name_ru": "Озон.Видео: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21845": {
+      "field_id": "21845",
+      "field_name_ru": "Озон.Видеообложка: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21899": {
+      "field_id": "21899",
+      "field_name_ru": "Форма выпуска",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22232": {
+      "field_id": "22232",
+      "field_name_ru": "ТН ВЭД коды ЕАЭС",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22273": {
+      "field_id": "22273",
+      "field_name_ru": "Озон.Видео: товары на видео",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22390": {
+      "field_id": "22390",
+      "field_name_ru": "Объединить в похожие товары",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23171": {
+      "field_id": "23171",
+      "field_name_ru": "#Хештеги",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23249": {
+      "field_id": "23249",
+      "field_name_ru": "Количество товара в УЕИ",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23487": {
+      "field_id": "23487",
+      "field_name_ru": "Производитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23518": {
+      "field_id": "23518",
+      "field_name_ru": "Минимальное количество оптом",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4191": {
+      "field_id": "4191",
+      "field_name_ru": "Аннотация",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "allowed_html=br,ul,li"
+    },
+    "4383": {
+      "field_id": "4383",
+      "field_name_ru": "Вес товара, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4386": {
+      "field_id": "4386",
+      "field_name_ru": "Упаковка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4389": {
+      "field_id": "4389",
+      "field_name_ru": "Страна-изготовитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8044": {
+      "field_id": "8044",
+      "field_name_ru": "Вес, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8048": {
+      "field_id": "8048",
+      "field_name_ru": "Способ применения",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8050": {
+      "field_id": "8050",
+      "field_name_ru": "Состав",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8163": {
+      "field_id": "8163",
+      "field_name_ru": "Объем, мл",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8187": {
+      "field_id": "8187",
+      "field_name_ru": "Особенности состава",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8199": {
+      "field_id": "8199",
+      "field_name_ru": "Эффект",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8201": {
+      "field_id": "8201",
+      "field_name_ru": "Тип волос",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8205": {
+      "field_id": "8205",
+      "field_name_ru": "Срок годности в днях",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8229": {
+      "field_id": "8229",
+      "field_name_ru": "Тип",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "85": {
+      "field_id": "85",
+      "field_name_ru": "Бренд",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8781": {
+      "field_id": "8781",
+      "field_name_ru": "Солнцезащитная косметика",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8789": {
+      "field_id": "8789",
+      "field_name_ru": "Название файла PDF",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8790": {
+      "field_id": "8790",
+      "field_name_ru": "Документ PDF",
+      "data_type": "URL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8962": {
+      "field_id": "8962",
+      "field_name_ru": "Единиц в одном товаре",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9048": {
+      "field_id": "9048",
+      "field_name_ru": "Название модели (для объединения в одну карточку)",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9070": {
+      "field_id": "9070",
+      "field_name_ru": "Признак 18+",
+      "data_type": "Boolean",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9115": {
+      "field_id": "9115",
+      "field_name_ru": "Професcиональное средство",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9163": {
+      "field_id": "9163",
+      "field_name_ru": "Пол",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9390": {
+      "field_id": "9390",
+      "field_name_ru": "Целевая аудитория",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9782": {
+      "field_id": "9782",
+      "field_name_ru": "Класс опасности товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "TITLE_MANUAL": {
+      "field_id": "TITLE_MANUAL",
+      "field_name_ru": "Название товара",
+      "data_type": "String",
+      "max_length": 200,
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "≤27 симв/слово; без CAPS; без HTML; см. Техздание SEO OZON"
+    }
+  },
+  "Парфюмерия": {
+    "11254": {
+      "field_id": "11254",
+      "field_name_ru": "Rich-контент JSON",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11650": {
+      "field_id": "11650",
+      "field_name_ru": "Количество заводских упаковок",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "12141": {
+      "field_id": "12141",
+      "field_name_ru": "Название модели для шаблона наименования",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21837": {
+      "field_id": "21837",
+      "field_name_ru": "Озон.Видео: название",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21841": {
+      "field_id": "21841",
+      "field_name_ru": "Озон.Видео: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21845": {
+      "field_id": "21845",
+      "field_name_ru": "Озон.Видеообложка: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22232": {
+      "field_id": "22232",
+      "field_name_ru": "ТН ВЭД коды ЕАЭС",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22270": {
+      "field_id": "22270",
+      "field_name_ru": "Вид выпуска товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22273": {
+      "field_id": "22273",
+      "field_name_ru": "Озон.Видео: товары на видео",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22390": {
+      "field_id": "22390",
+      "field_name_ru": "Объединить в похожие товары",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23171": {
+      "field_id": "23171",
+      "field_name_ru": "#Хештеги",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23249": {
+      "field_id": "23249",
+      "field_name_ru": "Количество товара в УЕИ",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23487": {
+      "field_id": "23487",
+      "field_name_ru": "Производитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23518": {
+      "field_id": "23518",
+      "field_name_ru": "Минимальное количество оптом",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4191": {
+      "field_id": "4191",
+      "field_name_ru": "Аннотация",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "allowed_html=br,ul,li"
+    },
+    "4383": {
+      "field_id": "4383",
+      "field_name_ru": "Вес товара, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4386": {
+      "field_id": "4386",
+      "field_name_ru": "Упаковка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4389": {
+      "field_id": "4389",
+      "field_name_ru": "Страна-изготовитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8008": {
+      "field_id": "8008",
+      "field_name_ru": "Классификация аромата",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8044": {
+      "field_id": "8044",
+      "field_name_ru": "Вес, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8050": {
+      "field_id": "8050",
+      "field_name_ru": "Состав",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8163": {
+      "field_id": "8163",
+      "field_name_ru": "Объем, мл",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8187": {
+      "field_id": "8187",
+      "field_name_ru": "Особенности состава",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8205": {
+      "field_id": "8205",
+      "field_name_ru": "Срок годности в днях",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8229": {
+      "field_id": "8229",
+      "field_name_ru": "Тип",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "85": {
+      "field_id": "85",
+      "field_name_ru": "Бренд",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8789": {
+      "field_id": "8789",
+      "field_name_ru": "Название файла PDF",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8790": {
+      "field_id": "8790",
+      "field_name_ru": "Документ PDF",
+      "data_type": "URL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8962": {
+      "field_id": "8962",
+      "field_name_ru": "Единиц в одном товаре",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9048": {
+      "field_id": "9048",
+      "field_name_ru": "Название модели (для объединения в одну карточку)",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9070": {
+      "field_id": "9070",
+      "field_name_ru": "Признак 18+",
+      "data_type": "Boolean",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9163": {
+      "field_id": "9163",
+      "field_name_ru": "Пол",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9390": {
+      "field_id": "9390",
+      "field_name_ru": "Целевая аудитория",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9782": {
+      "field_id": "9782",
+      "field_name_ru": "Класс опасности товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "TITLE_MANUAL": {
+      "field_id": "TITLE_MANUAL",
+      "field_name_ru": "Название товара",
+      "data_type": "String",
+      "max_length": 200,
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "≤27 симв/слово; без CAPS; без HTML; см. Техздание SEO OZON"
+    }
+  },
+  "Свеча": {
+    "10019": {
+      "field_id": "10019",
+      "field_name_ru": "Особенности свечи",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10096": {
+      "field_id": "10096",
+      "field_name_ru": "Цвет товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10097": {
+      "field_id": "10097",
+      "field_name_ru": "Название цвета",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10098": {
+      "field_id": "10098",
+      "field_name_ru": "Образец цвета",
+      "data_type": "ImageURL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10400": {
+      "field_id": "10400",
+      "field_name_ru": "Гарантия",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10735": {
+      "field_id": "10735",
+      "field_name_ru": "Время горения, ч",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "10736": {
+      "field_id": "10736",
+      "field_name_ru": "В подсвечнике",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11254": {
+      "field_id": "11254",
+      "field_name_ru": "Rich-контент JSON",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11299": {
+      "field_id": "11299",
+      "field_name_ru": "Подарочная упаковка в комплекте",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11619": {
+      "field_id": "11619",
+      "field_name_ru": "Название принта",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11650": {
+      "field_id": "11650",
+      "field_name_ru": "Количество заводских упаковок",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11729": {
+      "field_id": "11729",
+      "field_name_ru": "Класс опасности пиротехнического изделия",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "12641": {
+      "field_id": "12641",
+      "field_name_ru": "Цифра свечи/топпера",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "12776": {
+      "field_id": "12776",
+      "field_name_ru": "Название аромата",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "13155": {
+      "field_id": "13155",
+      "field_name_ru": "Вид фитиля",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21738": {
+      "field_id": "21738",
+      "field_name_ru": "Состав свечи",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21763": {
+      "field_id": "21763",
+      "field_name_ru": "Материал подсвечника",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21837": {
+      "field_id": "21837",
+      "field_name_ru": "Озон.Видео: название",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21841": {
+      "field_id": "21841",
+      "field_name_ru": "Озон.Видео: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21845": {
+      "field_id": "21845",
+      "field_name_ru": "Озон.Видеообложка: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22232": {
+      "field_id": "22232",
+      "field_name_ru": "ТН ВЭД коды ЕАЭС",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22270": {
+      "field_id": "22270",
+      "field_name_ru": "Вид выпуска товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22273": {
+      "field_id": "22273",
+      "field_name_ru": "Озон.Видео: товары на видео",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22390": {
+      "field_id": "22390",
+      "field_name_ru": "Объединить в похожие товары",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23171": {
+      "field_id": "23171",
+      "field_name_ru": "#Хештеги",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23249": {
+      "field_id": "23249",
+      "field_name_ru": "Количество товара в УЕИ",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23359": {
+      "field_id": "23359",
+      "field_name_ru": "Тип свечей",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23518": {
+      "field_id": "23518",
+      "field_name_ru": "Минимальное количество оптом",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4191": {
+      "field_id": "4191",
+      "field_name_ru": "Аннотация",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "allowed_html=br,ul,li"
+    },
+    "4383": {
+      "field_id": "4383",
+      "field_name_ru": "Вес товара, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4384": {
+      "field_id": "4384",
+      "field_name_ru": "Комплектация",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4385": {
+      "field_id": "4385",
+      "field_name_ru": "Гарантийный срок",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4389": {
+      "field_id": "4389",
+      "field_name_ru": "Страна-изготовитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "6392": {
+      "field_id": "6392",
+      "field_name_ru": "Объем, мл",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "6432": {
+      "field_id": "6432",
+      "field_name_ru": "Диаметр, см",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "7578": {
+      "field_id": "7578",
+      "field_name_ru": "Срок годности в днях",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8229": {
+      "field_id": "8229",
+      "field_name_ru": "Тип",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8414": {
+      "field_id": "8414",
+      "field_name_ru": "Высота, см",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8448": {
+      "field_id": "8448",
+      "field_name_ru": "Праздник",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "85": {
+      "field_id": "85",
+      "field_name_ru": "Бренд",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8789": {
+      "field_id": "8789",
+      "field_name_ru": "Название файла PDF",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8790": {
+      "field_id": "8790",
+      "field_name_ru": "Документ PDF",
+      "data_type": "URL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8962": {
+      "field_id": "8962",
+      "field_name_ru": "Единиц в одном товаре",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9048": {
+      "field_id": "9048",
+      "field_name_ru": "Название модели (для объединения в одну карточку)",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9070": {
+      "field_id": "9070",
+      "field_name_ru": "Признак 18+",
+      "data_type": "Boolean",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9230": {
+      "field_id": "9230",
+      "field_name_ru": "Крышка в комплекте",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9782": {
+      "field_id": "9782",
+      "field_name_ru": "Класс опасности товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9944": {
+      "field_id": "9944",
+      "field_name_ru": "Аромат",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "TITLE_MANUAL": {
+      "field_id": "TITLE_MANUAL",
+      "field_name_ru": "Название товара",
+      "data_type": "String",
+      "max_length": 200,
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "≤27 симв/слово; без CAPS; без HTML; см. Техздание SEO OZON"
+    }
+  },
+  "Соль для ванны": {
+    "10096": {
+      "field_id": "10096",
+      "field_name_ru": "Цвет товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11254": {
+      "field_id": "11254",
+      "field_name_ru": "Rich-контент JSON",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11650": {
+      "field_id": "11650",
+      "field_name_ru": "Количество заводских упаковок",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "20975": {
+      "field_id": "20975",
+      "field_name_ru": "Аромат",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21837": {
+      "field_id": "21837",
+      "field_name_ru": "Озон.Видео: название",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21841": {
+      "field_id": "21841",
+      "field_name_ru": "Озон.Видео: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21845": {
+      "field_id": "21845",
+      "field_name_ru": "Озон.Видеообложка: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22232": {
+      "field_id": "22232",
+      "field_name_ru": "ТН ВЭД коды ЕАЭС",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22273": {
+      "field_id": "22273",
+      "field_name_ru": "Озон.Видео: товары на видео",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22390": {
+      "field_id": "22390",
+      "field_name_ru": "Объединить в похожие товары",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23171": {
+      "field_id": "23171",
+      "field_name_ru": "#Хештеги",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23249": {
+      "field_id": "23249",
+      "field_name_ru": "Количество товара в УЕИ",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23313": {
+      "field_id": "23313",
+      "field_name_ru": "Вид средства для ванной",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23487": {
+      "field_id": "23487",
+      "field_name_ru": "Производитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23518": {
+      "field_id": "23518",
+      "field_name_ru": "Минимальное количество оптом",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4191": {
+      "field_id": "4191",
+      "field_name_ru": "Аннотация",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "allowed_html=br,ul,li"
+    },
+    "4383": {
+      "field_id": "4383",
+      "field_name_ru": "Вес товара, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4386": {
+      "field_id": "4386",
+      "field_name_ru": "Упаковка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4389": {
+      "field_id": "4389",
+      "field_name_ru": "Страна-изготовитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8044": {
+      "field_id": "8044",
+      "field_name_ru": "Вес, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8048": {
+      "field_id": "8048",
+      "field_name_ru": "Способ применения",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8050": {
+      "field_id": "8050",
+      "field_name_ru": "Состав",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8163": {
+      "field_id": "8163",
+      "field_name_ru": "Объем, мл",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8187": {
+      "field_id": "8187",
+      "field_name_ru": "Особенности состава",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8205": {
+      "field_id": "8205",
+      "field_name_ru": "Срок годности в днях",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8229": {
+      "field_id": "8229",
+      "field_name_ru": "Тип",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "85": {
+      "field_id": "85",
+      "field_name_ru": "Бренд",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8789": {
+      "field_id": "8789",
+      "field_name_ru": "Название файла PDF",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8790": {
+      "field_id": "8790",
+      "field_name_ru": "Документ PDF",
+      "data_type": "URL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8962": {
+      "field_id": "8962",
+      "field_name_ru": "Единиц в одном товаре",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9048": {
+      "field_id": "9048",
+      "field_name_ru": "Название модели (для объединения в одну карточку)",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9070": {
+      "field_id": "9070",
+      "field_name_ru": "Признак 18+",
+      "data_type": "Boolean",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9390": {
+      "field_id": "9390",
+      "field_name_ru": "Целевая аудитория",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9782": {
+      "field_id": "9782",
+      "field_name_ru": "Класс опасности товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "TITLE_MANUAL": {
+      "field_id": "TITLE_MANUAL",
+      "field_name_ru": "Название товара",
+      "data_type": "String",
+      "max_length": 200,
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "≤27 симв/слово; без CAPS; без HTML; см. Техздание SEO OZON"
+    }
+  },
+  "Средства для гигиены тела": {
+    "10096": {
+      "field_id": "10096",
+      "field_name_ru": "Цвет товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11254": {
+      "field_id": "11254",
+      "field_name_ru": "Rich-контент JSON",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11650": {
+      "field_id": "11650",
+      "field_name_ru": "Количество заводских упаковок",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "12776": {
+      "field_id": "12776",
+      "field_name_ru": "Название аромата",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21837": {
+      "field_id": "21837",
+      "field_name_ru": "Озон.Видео: название",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21841": {
+      "field_id": "21841",
+      "field_name_ru": "Озон.Видео: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21845": {
+      "field_id": "21845",
+      "field_name_ru": "Озон.Видеообложка: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21899": {
+      "field_id": "21899",
+      "field_name_ru": "Форма выпуска",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22227": {
+      "field_id": "22227",
+      "field_name_ru": "Вид дезодоранта",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22232": {
+      "field_id": "22232",
+      "field_name_ru": "ТН ВЭД коды ЕАЭС",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22273": {
+      "field_id": "22273",
+      "field_name_ru": "Озон.Видео: товары на видео",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22390": {
+      "field_id": "22390",
+      "field_name_ru": "Объединить в похожие товары",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22408": {
+      "field_id": "22408",
+      "field_name_ru": "Время работы дезодоранта",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22815": {
+      "field_id": "22815",
+      "field_name_ru": "Вид средства для душа",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23171": {
+      "field_id": "23171",
+      "field_name_ru": "#Хештеги",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23249": {
+      "field_id": "23249",
+      "field_name_ru": "Количество товара в УЕИ",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23487": {
+      "field_id": "23487",
+      "field_name_ru": "Производитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23518": {
+      "field_id": "23518",
+      "field_name_ru": "Минимальное количество оптом",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4191": {
+      "field_id": "4191",
+      "field_name_ru": "Аннотация",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "allowed_html=br,ul,li"
+    },
+    "4383": {
+      "field_id": "4383",
+      "field_name_ru": "Вес товара, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4386": {
+      "field_id": "4386",
+      "field_name_ru": "Упаковка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4389": {
+      "field_id": "4389",
+      "field_name_ru": "Страна-изготовитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8050": {
+      "field_id": "8050",
+      "field_name_ru": "Состав",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8163": {
+      "field_id": "8163",
+      "field_name_ru": "Объем, мл",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8172": {
+      "field_id": "8172",
+      "field_name_ru": "Тип кожи",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8176": {
+      "field_id": "8176",
+      "field_name_ru": "Область использования",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8187": {
+      "field_id": "8187",
+      "field_name_ru": "Особенности состава",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8205": {
+      "field_id": "8205",
+      "field_name_ru": "Срок годности в днях",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8229": {
+      "field_id": "8229",
+      "field_name_ru": "Тип",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "85": {
+      "field_id": "85",
+      "field_name_ru": "Бренд",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8789": {
+      "field_id": "8789",
+      "field_name_ru": "Название файла PDF",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8790": {
+      "field_id": "8790",
+      "field_name_ru": "Документ PDF",
+      "data_type": "URL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8962": {
+      "field_id": "8962",
+      "field_name_ru": "Единиц в одном товаре",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9048": {
+      "field_id": "9048",
+      "field_name_ru": "Название модели (для объединения в одну карточку)",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9070": {
+      "field_id": "9070",
+      "field_name_ru": "Признак 18+",
+      "data_type": "Boolean",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9163": {
+      "field_id": "9163",
+      "field_name_ru": "Пол",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9390": {
+      "field_id": "9390",
+      "field_name_ru": "Целевая аудитория",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9782": {
+      "field_id": "9782",
+      "field_name_ru": "Класс опасности товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "TITLE_MANUAL": {
+      "field_id": "TITLE_MANUAL",
+      "field_name_ru": "Название товара",
+      "data_type": "String",
+      "max_length": 200,
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "≤27 симв/слово; без CAPS; без HTML; см. Техздание SEO OZON"
+    }
+  },
+  "Средство после бритья": {
+    "11254": {
+      "field_id": "11254",
+      "field_name_ru": "Rich-контент JSON",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "11650": {
+      "field_id": "11650",
+      "field_name_ru": "Количество заводских упаковок",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21837": {
+      "field_id": "21837",
+      "field_name_ru": "Озон.Видео: название",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21841": {
+      "field_id": "21841",
+      "field_name_ru": "Озон.Видео: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "21845": {
+      "field_id": "21845",
+      "field_name_ru": "Озон.Видеообложка: ссылка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22232": {
+      "field_id": "22232",
+      "field_name_ru": "ТН ВЭД коды ЕАЭС",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22273": {
+      "field_id": "22273",
+      "field_name_ru": "Озон.Видео: товары на видео",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22390": {
+      "field_id": "22390",
+      "field_name_ru": "Объединить в похожие товары",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "22785": {
+      "field_id": "22785",
+      "field_name_ru": "Вид средства после бритья",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23171": {
+      "field_id": "23171",
+      "field_name_ru": "#Хештеги",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23249": {
+      "field_id": "23249",
+      "field_name_ru": "Количество товара в УЕИ",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23487": {
+      "field_id": "23487",
+      "field_name_ru": "Производитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "23518": {
+      "field_id": "23518",
+      "field_name_ru": "Минимальное количество оптом",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4191": {
+      "field_id": "4191",
+      "field_name_ru": "Аннотация",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "allowed_html=br,ul,li"
+    },
+    "4383": {
+      "field_id": "4383",
+      "field_name_ru": "Вес товара, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4386": {
+      "field_id": "4386",
+      "field_name_ru": "Упаковка",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "4389": {
+      "field_id": "4389",
+      "field_name_ru": "Страна-изготовитель",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8044": {
+      "field_id": "8044",
+      "field_name_ru": "Вес, г",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8050": {
+      "field_id": "8050",
+      "field_name_ru": "Состав",
+      "data_type": "multiline",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8163": {
+      "field_id": "8163",
+      "field_name_ru": "Объем, мл",
+      "data_type": "Decimal",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8172": {
+      "field_id": "8172",
+      "field_name_ru": "Тип кожи",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8187": {
+      "field_id": "8187",
+      "field_name_ru": "Особенности состава",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8205": {
+      "field_id": "8205",
+      "field_name_ru": "Срок годности в днях",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8229": {
+      "field_id": "8229",
+      "field_name_ru": "Тип",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "85": {
+      "field_id": "85",
+      "field_name_ru": "Бренд",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8789": {
+      "field_id": "8789",
+      "field_name_ru": "Название файла PDF",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8790": {
+      "field_id": "8790",
+      "field_name_ru": "Документ PDF",
+      "data_type": "URL",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "8962": {
+      "field_id": "8962",
+      "field_name_ru": "Единиц в одном товаре",
+      "data_type": "Integer",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9048": {
+      "field_id": "9048",
+      "field_name_ru": "Название модели (для объединения в одну карточку)",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9070": {
+      "field_id": "9070",
+      "field_name_ru": "Признак 18+",
+      "data_type": "Boolean",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9163": {
+      "field_id": "9163",
+      "field_name_ru": "Пол",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": true,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "9782": {
+      "field_id": "9782",
+      "field_name_ru": "Класс опасности товара",
+      "data_type": "String",
+      "max_length": "",
+      "is_required": false,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": ""
+    },
+    "TITLE_MANUAL": {
+      "field_id": "TITLE_MANUAL",
+      "field_name_ru": "Название товара",
+      "data_type": "String",
+      "max_length": 200,
+      "is_required": true,
+      "is_collection": false,
+      "allowed_values_count": 0,
+      "notes": "≤27 симв/слово; без CAPS; без HTML; см. Техздание SEO OZON"
+    }
+  }
+}
