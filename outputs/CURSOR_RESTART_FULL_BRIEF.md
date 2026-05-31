@@ -16,9 +16,10 @@
 |---|---|
 | WBSyncLib | `1BE9YkOsfu9FsYDyHHTdvtHnCXTa8TXpf46EIMMRNSMRI06dn0cK5hvd2` |
 | WBLib | `1UPClgAghLSdKjey8NbCEwZI7_pJ1cVEUIHSKTSotOgzK5rl1ibxwt0qO` |
-| Bootstrap копий | `1R8RMQ4sR93SIcTsuEiXHrcxdrnTn1c1bl6-ulHVswFsQn4o1MTXhXEOH` |
-| Bootstrap мастера | `1mVmHnt5pTRekk9C3lNwTewMkmcLA508BEsys2YVRb5oZkjeTII0NymgU` |
-| Legacy PGBOT1M08 | `1-iDt3Zs6Mz86_kKOO4z8gqfjm2OoQv-wnVKaKkeszA26Je9F9DO_tCkq` |
+| Bootstrap копий SKU | `1R8RMQ4sR93SIcTsuEiXHrcxdrnTn1c1bl6-ulHVswFsQn4o1MTXhXEOH` | `_BOOTSTRAP_DEPLOY/` |
+| **Bootstrap мастера (REAL)** | `1_rwr2crtHI9sT_gykGYfJHnhUGteyZzwbEQnbHm1v7-B07DZxlu_9BRH` | `_BOOTSTRAP_DEPLOY_MASTER_REAL/` |
+| Bootstrap мастера (ORPHAN, не push) | `1mVmHnt5pTRekk9C3lNwTewMkmcLA508BEsys2YVRb5oZkjeTII0NymgU` | `_BOOTSTRAP_DEPLOY_MASTER_ORPHAN/` |
+| Legacy PGBOT1M08 (bound копии, не мастер) | `1-iDt3Zs6Mz86_kKOO4z8gqfjm2OoQv-wnVKaKkeszA26Je9F9DO_tCkq` | `_LEGACY_PGBOT1M08/` |
 
 ## Drive ID
 
@@ -33,8 +34,9 @@
 ```
 WBSyncLib/                  ← новая Library (WB PULL/PUSH)
 _СВЕЖАЯ_ВЕРСИЯ_v3/          ← WBLib legacy + 4ЛК черновики
-_BOOTSTRAP_DEPLOY/          ← bound script копий SKU
-_BOOTSTRAP_DEPLOY_MASTER/   ← bound script мастера
+_BOOTSTRAP_DEPLOY/                  ← bound script копий SKU (1R8RMQ4…)
+_BOOTSTRAP_DEPLOY_MASTER_REAL/      ← bound script мастера (1_rwr2crt…)
+_BOOTSTRAP_DEPLOY_MASTER_ORPHAN/    ← ORPHAN 1mVmHnt5… — не push
 _BOOTSTRAP_DEPLOY_SHAMPOO/  ← образец pre-WBSyncLib
 _LEGACY_PGBOT1M08/          ← прототип меню
 restore/clone_all.ps1       ← clasp clone × 5

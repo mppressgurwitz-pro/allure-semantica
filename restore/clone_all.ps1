@@ -14,7 +14,7 @@ $projects = @(
     @{ Name = "WBSyncLib"; Id = "1BE9YkOsfu9FsYDyHHTdvtHnCXTa8TXpf46EIMMRNSMRI06dn0cK5hvd2" },
     @{ Name = "_СВЕЖАЯ_ВЕРСИЯ_v3"; Id = "1UPClgAghLSdKjey8NbCEwZI7_pJ1cVEUIHSKTSotOgzK5rl1ibxwt0qO" },
     @{ Name = "_BOOTSTRAP_DEPLOY"; Id = "1R8RMQ4sR93SIcTsuEiXHrcxdrnTn1c1bl6-ulHVswFsQn4o1MTXhXEOH" },
-    @{ Name = "_BOOTSTRAP_DEPLOY_MASTER"; Id = "1mVmHnt5pTRekk9C3lNwTewMkmcLA508BEsys2YVRb5oZkjeTII0NymgU" },
+    @{ Name = "_BOOTSTRAP_DEPLOY_MASTER_REAL"; Id = "1_rwr2crtHI9sT_gykGYfJHnhUGteyZzwbEQnbHm1v7-B07DZxlu_9BRH" },
     @{ Name = "_LEGACY_PGBOT1M08"; Id = "1-iDt3Zs6Mz86_kKOO4z8gqfjm2OoQv-wnVKaKkeszA26Je9F9DO_tCkq" }
 )
 

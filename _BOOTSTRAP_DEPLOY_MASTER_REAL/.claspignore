@@ -1,0 +1,6 @@
+**/*
+!Bootstrap.gs
+!SeoWrapper.gs
+!InjectMasterTemplate.gs
+!appsscript.json
+**/*.js

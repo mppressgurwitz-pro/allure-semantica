@@ -23,7 +23,8 @@
 | `WBSyncLib/` | `1BE9YkO…` | 12 модулей | ~43 KB | **Полный код Library** — не заглушка |
 | `_СВЕЖАЯ_ВЕРСИЯ_v3/` (WBLib) | `1UPCl…` | 30 | ~245 KB | Полный legacy + 4ЛК (`25_SkuRegistry`, `26_MigrateCopiesTo4LK`, `27_OzonTemplates`) |
 | `_BOOTSTRAP_DEPLOY/` | `1R8RMQ4…` | 3 | ~8 KB | Bootstrap + SeoWrapper |
-| `_BOOTSTRAP_DEPLOY_MASTER/` | `1mVmHnt5…` | 3 | ~9 KB | Bootstrap мастера + SeoWrapper |
+| `_BOOTSTRAP_DEPLOY_MASTER_REAL/` | `1_rwr2crt…` | TBD pull | — | **Bound мастера (REAL)** |
+| `_BOOTSTRAP_DEPLOY_MASTER_ORPHAN/` | `1mVmHnt5…` | 4 | ~9 KB | ORPHAN — не push |
 | `_BOOTSTRAP_DEPLOY_SHAMPOO/` | `1aydrFR…` | 2 | ~5 KB | Pre-WBSyncLib образец |
 | `_LEGACY_PGBOT1M08/` | `1-iDt3Zs6…` | 3 | — | Прототип PULL/PUSH (Apps Script.js) |
 
