@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; font-size: 13px; margin: 12px; color: #222; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, select { width: 100%; box-sizing: border-box; margin-top: 4px; padding: 6px; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .gender-grid { display: grid; grid-template-columns: 1fr 80px; gap: 6px 8px; align-items: center; margin-top: 6px; }
+    .gender-grid label { margin: 0; font-weight: normal; }
+    .btns { margin-top: 16px; text-align: right; }
+    button { padding: 8px 14px; margin-left: 8px; cursor: pointer; }
+    #status { margin-top: 12px; color: #c00; white-space: pre-wrap; }
+    #success { margin-top: 12px; color: #060; display: none; }
+    #success a { word-break: break-all; }
+    .hint { font-weight: normal; color: #666; font-size: 11px; }
+  </style>
+</head>
+<body>
+  <h3>➕ Создать карточку SKU</h3>
+  <p class="hint">Копия мастера → папка «Результаты по семантике» + запись в Реестр SKU.</p>
+
+  <label>vendorCode (артикул) *</label>
+  <input id="vendorCode" placeholder="PGEDP10010" />
+
+  <label>product_name (для имени файла) *</label>
+  <input id="productName" placeholder="Парфюм мужской 100мл" />
+
+  <label>category_wb *</label>
+  <select id="categoryWb"></select>
+  <input id="categoryWbOther" placeholder="Другая категория WB" style="display:none;" />
+
+  <label>category_ozon <span class="hint">(опционально)</span></label>
+  <select id="categoryOzon">
+    <option value="">— авто из WB —</option>
+  </select>
+
+  <div class="row2">
+    <div>
+      <label>nmID_wb_asmus</label>
+      <input id="nmWbAsmus" type="text" />
+    </div>
+    <div>
+      <label>nmID_wb_quantum</label>
+      <input id="nmWbQuantum" type="text" />
+    </div>
+    <div>
+      <label>nmID_ozon_asmus</label>
+      <input id="nmOzonAsmus" type="text" />
+    </div>
+    <div>
+      <label>nmID_ozon_quantum</label>
+      <input id="nmOzonQuantum" type="text" />
+    </div>
+  </div>
+
+  <label>Пол по ЛК <span class="hint">(ж / м / у, опционально)</span></label>
+  <div class="gender-grid">
+    <label>WB Асмус</label><select id="gWbAsmus"><option value=""></option><option value="ж">ж</option><option value="м">м</option><option value="у">у</option></select>
+    <label>WB Quantum</label><select id="gWbQuantum"><option value=""></option><option value="ж">ж</option><option value="м">м</option><option value="у">у</option></select>
+    <label>OZON Асмус</label><select id="gOzonAsmus"><option value=""></option><option value="ж">ж</option><option value="м">м</option><option value="у">у</option></select>
+    <label>OZON Quantum</label><select id="gOzonQuantum"><option value=""></option><option value="ж">ж</option><option value="м">м</option><option value="у">у</option></select>
+  </div>
+
+  <div id="status"></div>
+  <div id="success">
+    <strong>Карточка создана</strong><br>
+    <a id="sheetLink" href="#" target="_blank"></a>
+  </div>
+
+  <div class="btns">
+    <button type="button" onclick="google.script.host.close()">Отмена</button>
+    <button type="button" id="btnCreate" onclick="submitForm()">Создать</button>
+  </div>
+
+  <script>
+    var WB_OTHER = '__OTHER__';
+
+    function initForm(meta) {
+      var wbSel = document.getElementById('categoryWb');
+      (meta.wbCategories || []).forEach(function(c) {
+        var o = document.createElement('option');
+        o.value = c; o.textContent = c;
+        wbSel.appendChild(o);
+      });
+      var oth = document.createElement('option');
+      oth.value = WB_OTHER; oth.textContent = 'Другое (ввести руками)';
+      wbSel.appendChild(oth);
+
+      var ozSel = document.getElementById('categoryOzon');
+      (meta.ozonCategories || []).forEach(function(c) {
+        var o = document.createElement('option');
+        o.value = c; o.textContent = c;
+        ozSel.appendChild(o);
+      });
+
+      wbSel.addEventListener('change', function() {
+        document.getElementById('categoryWbOther').style.display =
+          wbSel.value === WB_OTHER ? 'block' : 'none';
+      });
+    }
+
+    function submitForm() {
+      var status = document.getElementById('status');
+      status.textContent = 'Создаём копию…';
+      document.getElementById('btnCreate').disabled = true;
+
+      var wb = document.getElementById('categoryWb').value;
+      if (wb === WB_OTHER) {
+        wb = document.getElementById('categoryWbOther').value.trim();
+      }
+
+      var payload = {
+        vendorCode: document.getElementById('vendorCode').value.trim(),
+        product_name: document.getElementById('productName').value.trim(),
+        category_wb: wb,
+        category_ozon: document.getElementById('categoryOzon').value.trim(),
+        nmID_wb_asmus: document.getElementById('nmWbAsmus').value.trim(),
+        nmID_wb_quantum: document.getElementById('nmWbQuantum').value.trim(),
+        nmID_ozon_asmus: document.getElementById('nmOzonAsmus').value.trim(),
+        nmID_ozon_quantum: document.getElementById('nmOzonQuantum').value.trim(),
+        gender_wb_asmus: document.getElementById('gWbAsmus').value,
+        gender_wb_quantum: document.getElementById('gWbQuantum').value,
+        gender_ozon_asmus: document.getElementById('gOzonAsmus').value,
+        gender_ozon_quantum: document.getElementById('gOzonQuantum').value
+      };
+
+      google.script.run
+        .withSuccessHandler(onSuccess)
+        .withFailureHandler(onFail)
+        .createSkuCardFromMasterServer_(payload);
+    }
+
+    function onSuccess(res) {
+      document.getElementById('btnCreate').disabled = false;
+      if (!res || !res.success) {
+        document.getElementById('status').textContent = (res && res.error) ? res.error : 'Неизвестная ошибка';
+        return;
+      }
+      document.getElementById('status').textContent = '';
+      var box = document.getElementById('success');
+      box.style.display = 'block';
+      var a = document.getElementById('sheetLink');
+      a.href = res.sheetUrl;
+      a.textContent = res.sheetUrl;
+    }
+
+    function onFail(err) {
+      document.getElementById('btnCreate').disabled = false;
+      document.getElementById('status').textContent = err.message || String(err);
+    }
+
+    google.script.run.withSuccessHandler(initForm).getCreateSkuCardDialogMeta_();
+  </script>
+</body>
+</html>
