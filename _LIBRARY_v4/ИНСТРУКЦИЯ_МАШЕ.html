@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Инструкция для Маши — заполнение колонок I–Q</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 10pt;
+    line-height: 1.4;
+    margin: 0;
+    padding: 14mm;
+    max-width: 210mm;
+  }
+  @media print { body { padding: 0; } }
+  h1 {
+    font-size: 16pt;
+    margin: 0 0 6px 0;
+    border-bottom: 2px solid #1a73e8;
+    padding-bottom: 4px;
+  }
+  h2 {
+    font-size: 12pt;
+    margin: 14px 0 6px 0;
+    color: #1a73e8;
+    border-bottom: 1px solid #dadce0;
+    padding-bottom: 2px;
+  }
+  p { margin: 4px 0; }
+  .lead {
+    background: #fff9e6;
+    border-left: 3px solid #f29900;
+    padding: 6px 10px;
+    margin: 8px 0 14px 0;
+    font-size: 9.5pt;
+  }
+  .lead strong { color: #b06000; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 10px 0;
+    font-size: 9pt;
+  }
+  th {
+    background: #fff2cc;
+    border: 1px solid #b89000;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 700;
+  }
+  td {
+    border: 1px solid #dadce0;
+    padding: 4px 6px;
+    vertical-align: top;
+  }
+  td.col { background: #f7f7f9; font-weight: 700; text-align: center; width: 22px; }
+  td.hdr { font-weight: 700; width: 110px; }
+  td.example { font-family: "Consolas", "Monaco", monospace; font-size: 8.5pt; color: #137333; }
+  .example-row {
+    background: #f1f8f4;
+    border: 1px solid #b7dfb9;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin: 4px 0;
+    font-size: 9pt;
+  }
+  .example-row .title { color: #137333; font-weight: 700; margin-bottom: 2px; }
+  .example-row code { background: white; padding: 1px 4px; border-radius: 3px; color: #1a73e8; }
+  .dont {
+    background: #fef0ef;
+    border-left: 3px solid #c5221f;
+    padding: 6px 10px;
+    font-size: 9.5pt;
+  }
+  .dont ul { margin: 4px 0 0 18px; padding: 0; }
+  .dont li { margin: 2px 0; }
+  .footer {
+    margin-top: 14px;
+    padding-top: 8px;
+    border-top: 1px solid #dadce0;
+    font-size: 8.5pt;
+    color: #5f6368;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Заполнение колонок I–Q в Шаблоне (для Маши)</h1>
+<p style="color:#5f6368;font-size:9pt;margin:0 0 8px 0;">
+  Файл: <b>Шаблон_INCI_для_Маши</b> → вкладка <b>SKU_INCI</b> · Версия v3.3 от 15.05.2026
+</p>
+
+<div class="lead">
+  <strong>Зачем это нужно:</strong> без этих колонок парфюмерия не получит правильное SEO с нотами, а наборы будут описаны как одиночные товары.
+  <strong>Обязательно</strong> заполнять всю парфюмерию (PressGurwitz №1–15 во всех формах и объёмах) и все наборы. Остальное (S&amp;H шампуни и т.п.) — по возможности: категория и объём.
+</div>
+
+<h2>Что вписывать в каждую колонку</h2>
+<table>
+  <thead><tr><th>Кол.</th><th>Заголовок</th><th>Что вписывать</th><th>Пример</th></tr></thead>
+  <tbody>
+    <tr>
+      <td class="col">I</td><td class="hdr">Категория</td>
+      <td>Тип продукта одним словосочетанием.</td>
+      <td class="example">Парфюмерная вода, Туалетная вода, Дезодорант, Лосьон для рук и тела, Шампунь, Гель для душа, Жидкое мыло, Свеча, Диффузор, Крем для рук, Соль для ванны, Маска для волос, Кондиционер, Бальзам после бритья, Скраб, Пилинг, Спрей, Набор</td>
+    </tr>
+    <tr>
+      <td class="col">J</td><td class="hdr">Номер аромата</td>
+      <td>Только цифра. Для PressGurwitz №1–15. Для не-парфюмерии (S&amp;H шампуни) — оставить пусто.</td>
+      <td class="example">3 · 6 · 15</td>
+    </tr>
+    <tr>
+      <td class="col">K</td><td class="hdr">Key notes (EN)</td>
+      <td>Английский оригинал с этикетки через запятую. Обычно 3 ноты.</td>
+      <td class="example">Tobacco, Cinnamon, Vanilla</td>
+    </tr>
+    <tr>
+      <td class="col">L</td><td class="hdr">Ключевые ноты (RU)</td>
+      <td>Русский перевод нот через запятую, маленькими буквами.</td>
+      <td class="example">табак, корица, ваниль</td>
+    </tr>
+    <tr>
+      <td class="col">M</td><td class="hdr">Объём (мл)</td>
+      <td>Только число, без «мл».</td>
+      <td class="example">10 · 30 · 50 · 300</td>
+    </tr>
+    <tr>
+      <td class="col">N</td><td class="hdr">Family ID</td>
+      <td>Идентификатор «семьи»: одинаковый у всех вариантов одного аромата в одной категории. Формат <b>БРЕНД-НОМЕР-КАТЕГОРИЯ</b>.</td>
+      <td class="example">PGP-3-EDP · PGP-2-LOTION · SH-DANDRUFF</td>
+    </tr>
+    <tr>
+      <td class="col">O</td><td class="hdr">Эталон Y/N</td>
+      <td><b>Y</b> у ОДНОГО SKU в семье (обычно самый продаваемый объём). У остальных — пусто.</td>
+      <td class="example">Y</td>
+    </tr>
+    <tr>
+      <td class="col">P</td><td class="hdr">Набор Y/N</td>
+      <td><b>Y</b> если это комплект из нескольких товаров (видно по названию). У одиночек — пусто.</td>
+      <td class="example">Y</td>
+    </tr>
+    <tr>
+      <td class="col">Q</td><td class="hdr">Состав набора</td>
+      <td>Только для наборов: WB-артикулы компонентов через запятую.</td>
+      <td class="example">445361666, 13771814, 868993506</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Примеры строк</h2>
+
+<div class="example-row">
+  <div class="title">Парфюм PGP №3, 50 мл (эталон)</div>
+  I: <code>Парфюмерная вода</code> · J: <code>3</code> · K: <code>Tobacco, Cinnamon, Vanilla</code> · L: <code>табак, корица, ваниль</code> · M: <code>50</code> · N: <code>PGP-3-EDP</code> · O: <code>Y</code> · P: пусто · Q: пусто
+</div>
+
+<div class="example-row">
+  <div class="title">Парфюм PGP №3, 10 мл (вариант той же семьи)</div>
+  I: <code>Парфюмерная вода</code> · J: <code>3</code> · K: <code>Tobacco, Cinnamon, Vanilla</code> · L: <code>табак, корица, ваниль</code> · M: <code>10</code> · N: <code>PGP-3-EDP</code> · O: пусто · P: пусто · Q: пусто
+</div>
+
+<div class="example-row">
+  <div class="title">Лосьон PGP №2, 300 мл (эталон семьи лосьонов №2)</div>
+  I: <code>Лосьон для рук и тела</code> · J: <code>2</code> · K: <code>Tonka bean, Pepper, Patchouli</code> · L: <code>бобы тонка, перец, пачули</code> · M: <code>300</code> · N: <code>PGP-2-LOTION</code> · O: <code>Y</code> · P: пусто · Q: пусто
+</div>
+
+<div class="example-row">
+  <div class="title">Набор PGP №1 (гель + молочко + парфюм)</div>
+  I: <code>Набор</code> · J: <code>1</code> · K: <code>Cardamom, Leather, Jasmine</code> · L: <code>кардамон, кожа, жасмин</code> · M: пусто · N: пусто · O: пусто · P: <code>Y</code> · Q: <code>WB-арт-геля, WB-арт-молочка, WB-арт-парфюма</code>
+</div>
+
+<div class="example-row">
+  <div class="title">Шампунь S&amp;H против перхоти, 1 л (эталон семьи)</div>
+  I: <code>Шампунь</code> · J: пусто · K: пусто · L: пусто · M: <code>1000</code> · N: <code>SH-DANDRUFF</code> · O: <code>Y</code> · P: пусто · Q: пусто
+</div>
+
+<h2>После заполнения</h2>
+<p>Когда заполнила хотя бы парфюмерию (PressGurwitz №1–15 во всех формах) и наборы — попроси Михаила запустить из меню:
+<b>🤖 Конкурентный анализ → 🗂 Мастер-файлы → 🔄 Sync Шаблон → Etiquettes_Master</b></p>
+<p>После этого SEO любого парфюмерного SKU будет включать ноты в первом абзаце описания, а наборы будут собираться из INCI всех компонентов по WB-артикулам.</p>
+
+<h2>Чего НЕ делать</h2>
+<div class="dont">
+  <ul>
+    <li>Не путать языки: английский — в K, русский — в L.</li>
+    <li>Не ставить <b>Y</b> в «Эталон» у нескольких SKU одной семьи — только у одного.</li>
+    <li>Не оставлять «Состав набора» пустым, если поставила <b>Набор Y/N = Y</b>.</li>
+    <li>Не дублировать строки SKU — один SKU = одна строка.</li>
+    <li>Не вписывать в «Состав набора» WB-артикул, которого нет в этой же таблице.</li>
+    <li>Не менять заголовки в строке 1 — на них завязан синхронизатор.</li>
+  </ul>
+</div>
+
+<p style="margin-top:10px;font-size:9.5pt;">Если непонятно — сверься с примерами выше или спроси Михаила. Лучше пропустить строку и пометить её жёлтым, чем заполнить наугад.</p>
+
+<div class="footer">
+  Документ обновляется по мере развития логики обработки. Версия v3.3, 15.05.2026.
+</div>
+
+</body>
+</html>

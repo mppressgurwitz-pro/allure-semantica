@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    body { font-family: -apple-system, Arial, sans-serif; padding: 12px; color: #222; }
+    h2 { font-size: 16px; margin: 0 0 12px 0; }
+    .panel { background: #f7f7f9; border: 1px solid #e3e3e8; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+    .section { padding: 10px 0; border-top: 1px dashed #d0d0d8; }
+    .section:first-child { border-top: 0; padding-top: 0; }
+    .section h3 { margin: 0 0 6px 0; font-size: 13px; color: #444; }
+    button { background: #1a73e8; color: white; border: 0; padding: 9px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; }
+    button:disabled { background: #9aa0a6; cursor: not-allowed; }
+    .step { margin: 6px 0; padding-left: 22px; position: relative; font-size: 13px; }
+    .step::before { content: "•"; position: absolute; left: 6px; color: #5f6368; }
+    .step.ok::before { content: "✓"; color: #137333; }
+    .step.err::before { content: "✗"; color: #c5221f; }
+    .small { font-size: 11px; color: #5f6368; }
+    .bar { height: 4px; background: #e3e3e8; border-radius: 2px; overflow: hidden; margin: 8px 0; }
+    .bar > div { height: 100%; background: #1a73e8; width: 0; transition: width 0.3s; }
+    input[type=file] { width: 100%; font-size: 12px; }
+    .files { margin-top: 6px; font-size: 11px; color: #5f6368; max-height: 80px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h2>📊 Загрузить MarketGuru</h2>
+
+  <div class="panel">
+    <div class="section">
+      <h3>🔵 Кластеры (по 1 файлу на каждый артикул)</h3>
+      <input type="file" id="clusters" accept=".xlsx" multiple />
+      <div class="files" id="clustersList"></div>
+    </div>
+    <div class="section">
+      <h3>🟢 Мониторинг полок (по 1 файлу на каждый артикул)</h3>
+      <input type="file" id="shelves" accept=".xlsx" multiple />
+      <div class="files" id="shelvesList"></div>
+    </div>
+    <button id="btnRun" onclick="run()" disabled>Загрузить и записать в шаблон</button>
+  </div>
+
+  <div class="panel">
+    <div class="bar"><div id="bar"></div></div>
+    <div id="log"></div>
+  </div>
+
+  <div class="panel small">
+    Можно загрузить только Кластеры, только Полки или оба типа сразу.<br>
+    Артикулы определяются автоматически из ячейки B2 каждого файла.
+  </div>
+
+  <script>
+    const cInp = document.getElementById('clusters');
+    const sInp = document.getElementById('shelves');
+    const btn  = document.getElementById('btnRun');
+    const log  = document.getElementById('log');
+    const bar  = document.getElementById('bar');
+
+    cInp.addEventListener('change', () => { renderList(cInp, 'clustersList'); validate(); });
+    sInp.addEventListener('change', () => { renderList(sInp, 'shelvesList');  validate(); });
+
+    function renderList(inp, listId) {
+      const div = document.getElementById(listId);
+      div.innerHTML = Array.from(inp.files).map(f => '• ' + f.name).join('<br>');
+    }
+    function validate() {
+      btn.disabled = (cInp.files.length + sInp.files.length === 0);
+    }
+    function step(m, cls) {
+      const d = document.createElement('div');
+      d.className = 'step' + (cls ? ' ' + cls : '');
+      d.textContent = m;
+      log.appendChild(d);
+    }
+    function setBar(p) { bar.style.width = p + '%'; }
+
+    async function readToBase64(f) {
+      return new Promise((res, rej) => {
+        const r = new FileReader();
+        r.onload  = e => res({ base64: e.target.result.split(',')[1], name: f.name, mimeType: f.type });
+        r.onerror = rej;
+        r.readAsDataURL(f);
+      });
+    }
+
+    async function run() {
+      btn.disabled = true; log.innerHTML = ''; setBar(5);
+      try {
+        const cFiles = Array.from(cInp.files);
+        const sFiles = Array.from(sInp.files);
+        step('Чтение ' + (cFiles.length + sFiles.length) + ' файлов в браузере…');
+        const cPayloads = await Promise.all(cFiles.map(readToBase64));
+        const sPayloads = await Promise.all(sFiles.map(readToBase64));
+        setBar(20);
+
+        const work = (payloads, label) => new Promise((res, rej) => {
+          if (!payloads.length) return res([]);
+          step('Загружаю в Drive и конвертирую: ' + label + ' (' + payloads.length + ' шт.)');
+          google.script.run
+            .withSuccessHandler(arr => { step('Конвертация ' + label + ' OK', 'ok'); res(arr); })
+            .withFailureHandler(rej)
+            .uploadMgFilesAndConvert(payloads);
+        });
+
+        const [cConv, sConv] = await Promise.all([work(cPayloads, 'Кластеры'), work(sPayloads, 'Полки')]);
+        setBar(60);
+        const cIds = cConv.map(x => x.fileId);
+        const sIds = sConv.map(x => x.fileId);
+
+        step('Запуск пайплайна записи в шаблон…');
+        google.script.run
+          .withSuccessHandler(r => {
+            setBar(100);
+            step('Готово: записано ' + r.clusterCount + ' блоков кластеров, ' +
+                 r.shelfCount + ' блоков полок (за ' + (r.duration/1000).toFixed(1) + ' сек)', 'ok');
+            btn.disabled = false;
+          })
+          .withFailureHandler(err => { step('Ошибка пайплайна: ' + err.message, 'err'); btn.disabled = false; })
+          .runMgPipeline(cIds, sIds);
+      } catch (e) {
+        step('Ошибка: ' + e.message, 'err');
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>

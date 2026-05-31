@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Конкурентный анализ WB — справка сотруднику</title>
+<style>
+  @page { size: A4 portrait; margin: 10mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.35;
+    color: #222;
+    margin: 0;
+    padding: 10mm;
+    max-width: 200mm;
+  }
+  h1 {
+    color: #1c4587;
+    font-size: 16pt;
+    margin: 0 0 4pt 0;
+    text-align: center;
+  }
+  .subtitle {
+    text-align: center;
+    color: #5f6368;
+    font-style: italic;
+    font-size: 10pt;
+    margin: 0 0 10pt 0;
+  }
+  h2 {
+    color: #1c4587;
+    font-size: 11.5pt;
+    margin: 8pt 0 2pt 0;
+    border-bottom: 1px solid #e3e3e8;
+    padding-bottom: 2pt;
+  }
+  h2.accent { color: #9900ff; }
+  h2.ok     { color: #38761d; }
+  ol, ul { margin: 2pt 0 4pt 16pt; padding: 0; }
+  ol li, ul li { margin-bottom: 2pt; }
+  p { margin: 2pt 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4pt 0;
+    font-size: 9.5pt;
+  }
+  th, td {
+    border: 1px solid #bdbdbd;
+    padding: 4pt 6pt;
+    vertical-align: top;
+    text-align: left;
+  }
+  th { background: #cfe2f3; font-weight: 700; }
+  td.tab { font-weight: 700; font-family: 'Courier New', monospace; white-space: nowrap; }
+  td.tab.green { color: #38761d; }
+  .warn {
+    background: #fef4f3;
+    border-left: 3px solid #c5221f;
+    padding: 6pt 8pt;
+    margin-top: 8pt;
+    font-size: 9.5pt;
+  }
+  .warn-title { color: #c5221f; font-weight: 700; margin-bottom: 2pt; }
+  .key { background: #fff2cc; padding: 1pt 4pt; border-radius: 2pt; font-weight: 600; }
+  .accent-button {
+    display: inline-block;
+    background: #9900ff;
+    color: white;
+    padding: 2pt 6pt;
+    border-radius: 3pt;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<h1>🤖 Конкурентный анализ WB — инструкция</h1>
+<p class="subtitle">Один прогон → готовый SEO + реклама + логистика + полки. ~5 минут от файла до результата.</p>
+
+<h2>1. Открыть таблицу товара</h2>
+<p>Откройте Google-таблицу «Сравнение конкурентов» по вашему артикулу. Ссылки на копии — в закрепе группы.</p>
+
+<h2>2. Загрузить отчёт Wildberries</h2>
+<ol>
+  <li>В <b>WB Партнёры → Аналитика → Сравнение карточек</b> добавьте наш артикул и 4 конкурентов, скачайте <b>XLSX</b>.</li>
+  <li>В таблице: меню <span class="key">🤖 Конкурентный анализ → 📥 Загрузить отчёт WB (XLSX)</span>.</li>
+  <li>Режим оставьте <b>«🔄 Обновить эту таблицу»</b> → выберите файл → <b>«Загрузить и обработать»</b>.</li>
+  <li>Дождитесь зелёных галочек прогресса (1–2 минуты).</li>
+</ol>
+
+<h2>3. Загрузить файлы MarketGuru (рекомендуется)</h2>
+<ol>
+  <li>Скачайте из MarketGuru по каждому из 5 артикулов: <b>«Кластеры»</b> (Анализ → Кластеры) и <b>«Мониторинг полок»</b> (Карточка → Полки).</li>
+  <li>Меню → <span class="key">📊 Загрузить файлы MarketGuru</span>.</li>
+  <li>В сайдбаре: все Кластеры в одну секцию, все Полки в другую (Ctrl/Shift-клик) → <b>«Загрузить и записать»</b>.</li>
+</ol>
+
+<h2 class="accent">4. Сгенерировать рекомендации</h2>
+<p>Меню → <span class="accent-button">🪄 Полный пакет рекомендаций: SEO + реклама + склады + полки (Claude)</span></p>
+<p>Подождите 1–3 минуты. Появится сообщение <b style="color:#38761d">«✅ Готово»</b>. Если выскочила ошибка — см. блок внизу.</p>
+
+<h2>5. Где смотреть результаты</h2>
+<table>
+  <tr><th style="width:32%">Вкладка</th><th>Что внутри</th></tr>
+  <tr><td class="tab">_Dashboard</td><td>Главная страница: KPI и ссылки на все остальные вкладки.</td></tr>
+  <tr><td class="tab">_Advice_SEO_Draft</td><td>Title, описание, характеристики и тексты для <b>6 фото-слайдов</b> инфографики (WB читает OCR со всех фоток).</td></tr>
+  <tr><td class="tab">_Advice_Ad_Strategy</td><td>Стратегия авто- и поисковой рекламы: ключи, минус-слова, ставки.</td></tr>
+  <tr><td class="tab">_Advice_Logistics</td><td>Какие склады приоритезировать для отгрузки, какие пропустить.</td></tr>
+  <tr><td class="tab">_Advice_Shelf_Strategy</td><td>Рекомендуемые рекламные полки + куда не идти. С бюджетами и причинами.</td></tr>
+  <tr><td class="tab">_Advice_Competitor_Analysis</td><td>По каждому из 4 конкурентов: сильные стороны, слабые, что сделать нам.</td></tr>
+  <tr><td class="tab green">_Advice_Implementation_Tracker</td><td>Чек-лист внедрения с галочками. История запусков сохраняется между прогонами.</td></tr>
+</table>
+
+<h2 class="ok">6. Внедрить и отметить — самое главное</h2>
+<p>Откройте <b>_Advice_Implementation_Tracker</b> и ставьте галочку напротив каждой выполненной задачи: обновили title, заменили фотки, запустили рекламу, отгрузили на склад и т.д. Лист <b>не очищается</b> между запусками — видна вся история внедрений.</p>
+
+<div class="warn">
+  <div class="warn-title">⚠️ Если что-то пошло не так</div>
+  <ul>
+    <li>Откройте вкладку <b>_Logs</b> — последняя строка покажет точную причину.</li>
+    <li><b>«Превышено время ожидания»</b> / <b>«Claude API 503»</b> — повторите кнопку через 2 минуты, обычно проходит.</li>
+    <li><b>«Claude вернул невалидный JSON»</b> — посмотрите вкладку <b>_Advice_Last_Raw</b>, перезапустите.</li>
+    <li>Любые странности — Михаилу, со скрином из <b>_Logs</b>.</li>
+  </ul>
+</div>
+
+</body>
+</html>

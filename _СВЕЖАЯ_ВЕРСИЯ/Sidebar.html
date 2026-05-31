@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    body { font-family: -apple-system, Arial, sans-serif; padding: 12px; color: #222; }
+    h2 { font-size: 16px; margin: 0 0 12px 0; }
+    .panel { background: #f7f7f9; border: 1px solid #e3e3e8; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+    .file-pick { margin: 8px 0; }
+    button { background: #1a73e8; color: white; border: 0; padding: 9px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; }
+    button:disabled { background: #9aa0a6; cursor: not-allowed; }
+    button.secondary { background: #fff; color: #1a73e8; border: 1px solid #1a73e8; }
+    .step { margin: 6px 0; padding-left: 22px; position: relative; font-size: 13px; }
+    .step::before { content: "•"; position: absolute; left: 6px; color: #5f6368; }
+    .step.ok::before { content: "✓"; color: #137333; }
+    .step.err::before { content: "✗"; color: #c5221f; }
+    .small { font-size: 11px; color: #5f6368; }
+    .bar { height: 4px; background: #e3e3e8; border-radius: 2px; overflow: hidden; margin: 8px 0; }
+    .bar > div { height: 100%; background: #1a73e8; width: 0; transition: width 0.3s; }
+    code { background: #f1f3f4; padding: 1px 4px; border-radius: 3px; font-size: 11px; }
+    .mode { display: flex; gap: 6px; margin-bottom: 8px; }
+    .mode label { flex: 1; border: 1px solid #dadce0; border-radius: 6px; padding: 8px; cursor: pointer; font-size: 12px; text-align: center; background: #fff; }
+    .mode input[type=radio] { display: none; }
+    .mode input[type=radio]:checked + span { color: #1a73e8; font-weight: 600; }
+    .mode label:has(input:checked) { border-color: #1a73e8; background: #e8f0fe; }
+    .field { margin: 8px 0; }
+    .field label { display: block; font-size: 11px; color: #5f6368; margin-bottom: 3px; }
+    .field input { width: 100%; box-sizing: border-box; padding: 7px 9px; border: 1px solid #dadce0; border-radius: 4px; font-size: 13px; }
+    .copy-fields { display: none; }
+    .copy-fields.shown { display: block; }
+    a { color: #1a73e8; }
+  </style>
+</head>
+<body>
+  <h2>🤖 Конкурентный анализ WB</h2>
+
+  <div class="panel">
+    <div class="mode">
+      <label><input type="radio" name="mode" value="inplace" checked><span>🔄 Обновить эту таблицу</span></label>
+      <label><input type="radio" name="mode" value="copy"><span>🆕 Создать новую таблицу для другого SKU</span></label>
+    </div>
+
+    <div class="copy-fields" id="copyFields">
+      <div class="field">
+        <label>Название товара (войдёт в имя файла)</label>
+        <input type="text" id="productName" placeholder="Шампунь Савач от перхоти 1 л">
+      </div>
+      <div class="field">
+        <label>Артикул WB нашего товара</label>
+        <input type="text" id="ourSku" placeholder="например, 445361666">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Файл WB «Сравнение карточек» (.xlsx)</label>
+      <input type="file" id="file" accept=".xlsx" />
+    </div>
+    <button id="btnRun" onclick="run()" disabled>Загрузить и обработать</button>
+  </div>
+
+  <div class="panel">
+    <div class="bar"><div id="bar"></div></div>
+    <div id="log"></div>
+    <div id="result"></div>
+  </div>
+
+  <div class="panel small">
+    Последний запуск: <span id="last">—</span>
+  </div>
+
+  <script>
+    const fileInp     = document.getElementById('file');
+    const btn         = document.getElementById('btnRun');
+    const log         = document.getElementById('log');
+    const bar         = document.getElementById('bar');
+    const result      = document.getElementById('result');
+    const copyFields  = document.getElementById('copyFields');
+    let chosen = null;
+
+    document.querySelectorAll('input[name=mode]').forEach(r => {
+      r.addEventListener('change', () => {
+        copyFields.classList.toggle('shown', r.value === 'copy' && r.checked);
+        validate();
+      });
+    });
+    fileInp.addEventListener('change', () => { chosen = fileInp.files[0] || null; validate(); });
+    document.getElementById('productName').addEventListener('input', validate);
+    document.getElementById('ourSku').addEventListener('input', validate);
+
+    function getMode() {
+      return document.querySelector('input[name=mode]:checked').value;
+    }
+    function validate() {
+      const mode = getMode();
+      let ok = !!chosen;
+      if (mode === 'copy') {
+        ok = ok && document.getElementById('productName').value.trim().length > 0
+              && document.getElementById('ourSku').value.trim().length > 0;
+      }
+      btn.disabled = !ok;
+    }
+    function step(msg, cls) {
+      const div = document.createElement('div');
+      div.className = 'step' + (cls ? ' ' + cls : '');
+      div.textContent = msg;
+      log.appendChild(div);
+    }
+    function setBar(pct) { bar.style.width = pct + '%'; }
+
+    function run() {
+      if (!chosen) return;
+      btn.disabled = true;
+      log.innerHTML = ''; result.innerHTML = '';
+      setBar(5);
+      step('Чтение файла «' + chosen.name + '»…');
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const b64 = e.target.result.split(',')[1];
+        setBar(20);
+        step('Загрузка в Google Drive и конвертация в Google Sheets…');
+        google.script.run
+          .withSuccessHandler(function(res) {
+            setBar(45);
+            step('Файл сконвертирован: ' + res.name, 'ok');
+            const mode = getMode();
+            if (mode === 'inplace') {
+              step('Запуск пайплайна (текущая таблица)…');
+              google.script.run
+                .withSuccessHandler(onDoneInplace)
+                .withFailureHandler(onFail)
+                .runPipelineFromUI(res.fileId, res.name);
+            } else {
+              const productName = document.getElementById('productName').value.trim();
+              const ourSku = document.getElementById('ourSku').value.trim();
+              step('Создаю копию шаблона под SKU ' + ourSku + '…');
+              google.script.run
+                .withSuccessHandler(onDoneCopy)
+                .withFailureHandler(onFail)
+                .runPipelineWithCopyFromUI(res.fileId, res.name, productName, ourSku);
+            }
+          })
+          .withFailureHandler(onFail)
+          .uploadXlsxAndConvert({
+            base64: b64,
+            mimeType: chosen.type,
+            name: chosen.name
+          });
+      };
+      reader.readAsDataURL(chosen);
+    }
+
+    function onDoneInplace(r) {
+      setBar(100);
+      step('Готово за ' + (r.duration/1000).toFixed(1) + ' сек', 'ok');
+      btn.disabled = false; refreshLast();
+    }
+    function onDoneCopy(r) {
+      setBar(100);
+      step('Готово за ' + (r.duration/1000).toFixed(1) + ' сек', 'ok');
+      result.innerHTML = '<p><b>📋 Создана таблица:</b><br>' +
+        '<a href="' + r.url + '" target="_blank">' + r.name + '</a></p>';
+      btn.disabled = false; refreshLast();
+    }
+    function onFail(err) {
+      step('Ошибка: ' + err.message, 'err');
+      btn.disabled = false;
+    }
+
+    function refreshLast() {
+      google.script.run.withSuccessHandler(function(s) {
+        document.getElementById('last').textContent =
+          (s.lastRun ? new Date(s.lastRun).toLocaleString() : '—') +
+          ' · ' + (s.lastFile || '—') +
+          ' · ' + (s.lastStatus || '');
+      }).getLastRunStatus();
+    }
+
+    refreshLast();
+  </script>
+</body>
+</html>

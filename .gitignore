@@ -1,0 +1,16 @@
+﻿# clasp
+.clasp.json
+**/.clasp.json
+
+# clasp pull artifacts (keep .gs as source of truth)
+**/*.js
+!**/node_modules/**
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+.env
+*credentials*

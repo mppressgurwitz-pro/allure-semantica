@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 12px; font-size: 13px; }
+    .panel { background: #f7f7f9; border: 1px solid #e3e3e8; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+    button { background: #1a73e8; color: white; border: 0; padding: 9px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; }
+    button:disabled { background: #9aa0a6; cursor: not-allowed; }
+    .step { margin: 4px 0; font-size: 12px; line-height: 1.4; }
+    .step.ok::before { content: "✓ "; color: #137333; }
+    .step.err::before { content: "✗ "; color: #c5221f; }
+    .step.warn::before { content: "⚠ "; color: #f29900; }
+    .step.info { color: #5f6368; font-style: italic; }
+    .bar { height: 6px; background: #e3e3e8; border-radius: 3px; overflow: hidden; margin: 8px 0; }
+    .bar > div { height: 100%; background: #1a73e8; width: 0; transition: width 0.3s; }
+    input[type=file] { width: 100%; font-size: 12px; }
+    .field { margin: 8px 0; }
+    .field label { display: block; font-size: 11px; color: #5f6368; margin-bottom: 3px; font-weight: 600; }
+    .hint { font-size: 11px; color: #5f6368; margin-top: 4px; line-height: 1.4; }
+    .files-list { max-height: 100px; overflow-y: auto; font-size: 11px; margin-top: 6px; padding: 6px; background: #fff; border: 1px solid #e3e3e8; border-radius: 4px; }
+    .files-list div { padding: 1px 0; }
+    .summary { margin-top: 8px; padding: 8px; background: #fff; border: 1px solid #e3e3e8; border-radius: 4px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h2 style="margin: 0 0 10px 0;">📊 MarketGuru</h2>
+  <div class="panel">
+    <div class="field">
+      <label>Файлы MarketGuru (.xlsx, несколько)</label>
+      <input type="file" id="files" accept=".xlsx" multiple />
+      <div class="hint">Можно загрузить сразу несколько. Тип (Кластеры / Полки) определяю автоматически.</div>
+      <div class="files-list" id="filesList"></div>
+    </div>
+    <button id="btnRun" onclick="run()" disabled>Загрузить и обработать</button>
+  </div>
+  <div class="panel">
+    <div class="bar"><div id="bar"></div></div>
+    <div id="log"></div>
+  </div>
+  <script>
+    const filesInput = document.getElementById('files');
+    const btn = document.getElementById('btnRun');
+    const log = document.getElementById('log');
+    const bar = document.getElementById('bar');
+    const filesList = document.getElementById('filesList');
+    let chosen = [];
+
+    filesInput.addEventListener('change', () => {
+      chosen = Array.from(filesInput.files || []);
+      filesList.innerHTML = '';
+      chosen.forEach(f => {
+        const d = document.createElement('div');
+        d.textContent = '📄 ' + f.name + ' (' + (f.size/1024).toFixed(0) + ' КБ)';
+        filesList.appendChild(d);
+      });
+      btn.disabled = chosen.length === 0;
+    });
+
+    function step(m, cls) {
+      const d = document.createElement('div');
+      d.className = 'step' + (cls ? ' ' + cls : '');
+      d.textContent = m;
+      log.appendChild(d);
+      log.scrollTop = log.scrollHeight;
+      return d;
+    }
+    function setBar(p) { bar.style.width = p + '%'; }
+
+    function readFileBase64(file) {
+      return new Promise((resolve, reject) => {
+        const r = new FileReader();
+        r.onload = e => resolve({ name: file.name, mimeType: file.type, base64: e.target.result.split(',')[1] });
+        r.onerror = () => reject(new Error('Чтение ' + file.name + ' не удалось'));
+        r.readAsDataURL(file);
+      });
+    }
+
+    // Обёртка над google.script.run в виде Promise
+    function callServer(method, ...args) {
+      return new Promise((resolve, reject) => {
+        google.script.run
+          .withSuccessHandler(resolve)
+          .withFailureHandler(err => reject(new Error(err && err.message ? err.message : String(err))))
+          [method](...args);
+      });
+    }
+
+    async function run() {
+      btn.disabled = true;
+      log.innerHTML = '';
+      setBar(2);
+
+      const total = chosen.length;
+      step('Старт обработки ' + total + ' файлов', 'info');
+
+      const uploaded = [];
+      const failed = [];
+
+      // Поочерёдная загрузка
+      for (let i = 0; i < total; i++) {
+        const f = chosen[i];
+        const idx = i + 1;
+        step('[' + idx + '/' + total + '] ' + f.name + '…');
+        setBar(2 + (idx - 1) * (70 / total));
+        try {
+          const payload = await readFileBase64(f);
+          const res = await callServer('uploadMgSingleFile', payload);
+          if (res && res.ok) {
+            const kindLabel = res.kind === 'CLUSTERS' ? '🟦 Кластеры'
+                            : res.kind === 'SHELVES' ? '🟩 Полки'
+                            : '⚠ тип не определён';
+            step('  → ' + kindLabel, res.kind === 'UNKNOWN' ? 'warn' : 'ok');
+            uploaded.push(res);
+          } else {
+            step('  ✗ ' + (res && res.error ? res.error : 'неизвестная ошибка'), 'err');
+            failed.push({ name: f.name, error: res && res.error ? res.error : 'unknown' });
+          }
+        } catch (err) {
+          step('  ✗ ' + err.message, 'err');
+          failed.push({ name: f.name, error: err.message });
+        }
+      }
+
+      setBar(75);
+
+      const okClusters = uploaded.filter(u => u.kind === 'CLUSTERS').length;
+      const okShelves = uploaded.filter(u => u.kind === 'SHELVES').length;
+      const okUnknown = uploaded.filter(u => u.kind === 'UNKNOWN').length;
+
+      const summary = document.createElement('div');
+      summary.className = 'summary';
+      summary.innerHTML =
+        '<b>Загрузка завершена:</b><br>' +
+        '🟦 Кластеры: ' + okClusters + ' &nbsp; 🟩 Полки: ' + okShelves +
+        (okUnknown ? ' &nbsp; ⚠ Без типа: ' + okUnknown : '') +
+        (failed.length ? '<br>✗ Не загружено: ' + failed.length : '');
+      log.appendChild(summary);
+
+      if (uploaded.length === 0) {
+        step('Нечего обрабатывать.', 'err');
+        btn.disabled = false;
+        return;
+      }
+
+      step('Запуск pipeline (очередь)…');
+      try {
+        const r = await callServer('runMgPipelineUnified', uploaded);
+        setBar(95);
+        if (r) {
+          step('Обработано: clusters=' + (r.clusterCount || 0) +
+               ', shelves=' + (r.shelfCount || 0) +
+               (r.pending ? ', в очереди ещё ' + r.pending : ''), 'ok');
+          if (r.skipped) step('Пропущено (без типа): ' + r.skipped, 'warn');
+        }
+        setBar(100);
+        step('Готово. Можешь закрыть сайдбар.', 'ok');
+      } catch (err) {
+        step('Pipeline: ' + err.message, 'err');
+      }
+      btn.disabled = false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+/**
+ * SeoWrapper.gs — тонкая обёртка над WBSyncLib для bound-скрипта копии SKU.
+ */
+
+function onOpenSeo_() {
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu('🪄 SEO в WB')
+    .addSubMenu(ui.createMenu('📥 Загрузить из WB')
+      .addItem('Из Асмус', 'pullAsmus_')
+      .addItem('Из Quantum', 'pullQuantum_'))
+    .addSeparator()
+    .addItem('↻ Перенести SEO → тех.блок', 'transferSeo_')
+    .addItem('🧹 Очистить «Новое значение»', 'clearNew_')
+    .addSeparator()
+    .addSubMenu(ui.createMenu('📤 Выгрузить в WB')
+      .addItem('В Асмус (safe GET→merge→PUT)', 'pushAsmus_')
+      .addItem('В Quantum (safe GET→merge→PUT)', 'pushQuantum_'))
+    .addSeparator()
+    .addItem('🔍 Проверить артикул', 'diagnoseVendor_')
+    .addItem('🔧 Починить артикул (CYR→LAT)', 'fixVendor_')
+    .addSeparator()
+    .addItem('⚙️ Ozon (скоро)', 'ozonStub_')
+    .addToUi();
+
+  try {
+    WBSyncLib.autoTransferSeoOnOpen(SpreadsheetApp.getActiveSpreadsheet());
+  } catch (err) {
+    Logger.log('autoTransferSeo: ' + err.message);
+  }
+}
+
+function pullAsmus_() { WBSyncLib.pullFromAsmus(SpreadsheetApp.getActiveSpreadsheet()); }
+function pullQuantum_() { WBSyncLib.pullFromQuantum(SpreadsheetApp.getActiveSpreadsheet()); }
+function pushAsmus_() { WBSyncLib.pushToAsmus(SpreadsheetApp.getActiveSpreadsheet()); }
+function pushQuantum_() { WBSyncLib.pushToQuantum(SpreadsheetApp.getActiveSpreadsheet()); }
+function transferSeo_() { WBSyncLib.transferSeoToTechBlock(SpreadsheetApp.getActiveSpreadsheet()); }
+function clearNew_() { WBSyncLib.clearNewValues(SpreadsheetApp.getActiveSpreadsheet()); }
+function diagnoseVendor_() { WBSyncLib.diagnoseVendor(SpreadsheetApp.getActiveSpreadsheet()); }
+function fixVendor_() { WBSyncLib.fixVendorCode(SpreadsheetApp.getActiveSpreadsheet()); }
+
+function ozonStub_() {
+  try {
+    WBLib.showOzonExportHintDialog();
+  } catch (e) {
+    SpreadsheetApp.getUi().alert(
+      'Ozon',
+      'SEO → колонки E/F в _Advice_SEO_Draft.\n' +
+      'Шаблоны: OneDrive\\ОП_E-COMMERCE\\Автоматизация\\Шаблоны для SEO-Ozon',
+      SpreadsheetApp.getUi().ButtonSet.OK
+    );
+  }
+}
+
+function wbsyncLibMissingHelp_() {
+  SpreadsheetApp.getUi().alert(
+    'WBSyncLib не подключена',
+    'Apps Script → Libraries → WBSyncLib (HEAD). Разрешите scopes при первом запуске.',
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
+}
