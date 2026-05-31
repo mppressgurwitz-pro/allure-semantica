@@ -1,0 +1,24 @@
+--- _SVZHEAYA_VERSIYA_v3/27_OzonTemplates.gs
++++ outputs/27_OzonTemplates.gs
+@@ -1,8 +1,18 @@
++/**
++ * 27_OzonTemplates.gs — bundle-копия для рестарта 2026-05-31.
++ * (comments only — executable code unchanged vs server v1)
++ */
+ /**
+  * 27_OzonTemplates.gs
+  * Сопоставление категории WB → шаблон выгрузки Ozon (xlsx).
+  */
+@@ -93,6 +103,7 @@
+       if (!ozonCat && (raw.indexOf(k) >= 0 || k.indexOf(raw) >= 0)) ozonCat = OZON_TEMPLATES.WB_TO_OZON[k];
+     });
+   }
++  // D4: убрать fallback, заменить на Ui.alert
+   if (!ozonCat) ozonCat = 'Косметика для ухода';
+ 
+@@ -104,7 +115,6 @@
+   };
+ }
+ 
+-/** Вызывается из migrateCopyTo4LK — прописывает Ozon-шаблон в _Config копии */
+ function applyOzonTemplateConfigToCopy_(ss) {
