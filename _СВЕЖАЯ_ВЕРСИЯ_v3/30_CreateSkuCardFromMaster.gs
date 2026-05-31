@@ -1,172 +1,286 @@
 /**
- * 30_CreateSkuCardFromMaster.gs — ЧП-2bis H2: создание SKU-копии из мастера (HTML dialog).
+ * 30_CreateSkuCardFromMaster.gs — создание SKU-копии из мастера по Шаблон_INCI / SKU_INCI.
  */
 
 var MASTER_TEMPLATE_ID_DEFAULT_ = '16OBo1Enr19SFOuLm2pNy_JagMFppNqXKsYlUbLw_8S0';
 var COPIES_FOLDER_ID_DEFAULT_ = '1gDUCk2a9h7z0zfNzAneXJkBtlupCYxy3';
-var COPY_NAME_TEMPLATE_ = 'Ср конк  — {product_name} {sku_code} {wb_id} (арт {wb_id})';
 var CREATE_SKU_SCHEMA_VERSION_ = '4TAB_2026-05-31';
-
-var WB_CATEGORIES_CREATE_SKU_ = [
-  'Гели', 'Дезодоранты', 'Духи', 'Кондиционеры для волос', 'Лосьоны',
-  'Мыло косметическое', 'Парфюм для дома', 'Парфюмерная вода', 'Пилинг',
-  'Саше ароматические', 'Соль для ванн', 'Спреи', 'Шампуни',
-  'Косметические наборы для ухода'
-];
-
-var OZON_CATEGORIES_CREATE_SKU_ = [
-  'Парфюмерия', 'Свеча', 'Соль для ванны', 'Косметика для ухода',
-  'Косметика для ухода за волосами', 'Ароматы для дома',
-  'Средство после бритья', 'Средства для гигиены тела'
-];
+var PGBOT1M08_REGRESSION_ID_ = '1NOO50oa9CWfXzA7AixR7zapj1xzr2e3xhK7lM6Cc3bQ';
 
 function createSkuCardFromMasterDialog() {
   var html = HtmlService.createHtmlOutputFromFile('CreateSkuCardDialog')
-    .setWidth(520)
-    .setHeight(640);
+    .setWidth(480)
+    .setHeight(420);
   SpreadsheetApp.getUi().showModalDialog(html, '➕ Создать карточку SKU');
 }
 
-function getCreateSkuCardDialogMeta_() {
+/**
+ * Шаг 1: lookup по внутреннему коду → preview или ошибка.
+ * @param {string} internalCode
+ * @return {Object}
+ */
+function lookupSkuInciForCreateCard_(internalCode) {
+  var code = String(internalCode || '').trim();
+  if (!code) {
+    return { ok: false, error: 'Введите внутренний код 1С' };
+  }
+
+  var data = readShablonINCIByInternalCode_(code);
+  if (!data) {
+    return {
+      ok: false,
+      error: 'SKU не найден в Шаблон_INCI_для_Маши, проверь код'
+    };
+  }
+
+  var folderId = String(getParam_('COPIES_FOLDER_ID', '') || '').trim() ||
+    COPIES_FOLDER_ID_DEFAULT_;
+  var existing = findExistingCopyByInternalCode_(folderId, code);
+  if (existing) {
+    return {
+      ok: false,
+      error: 'Карточка с этим кодом уже есть в «Результаты по семантике»:\n' + existing.url,
+      existingUrl: existing.url,
+      existingName: existing.name
+    };
+  }
+
   return {
-    wbCategories: WB_CATEGORIES_CREATE_SKU_,
-    ozonCategories: OZON_CATEGORIES_CREATE_SKU_
+    ok: true,
+    preview: buildSkuCreatePreview_(data)
   };
 }
 
 /**
- * @param {Object} formData
- * @return {{success: boolean, sheetUrl?: string, sheetId?: string, error?: string}}
+ * @param {Object} data from readShablonINCIByInternalCode_
+ * @return {Object}
  */
-function createSkuCardFromMasterServer_(formData) {
+function buildSkuCreatePreview_(data) {
+  return {
+    internalCode: data.internalCode,
+    name: data.name,
+    brand: data.brand,
+    nmid_wb_asmus: data.nmid_wb_asmus || '—',
+    nmid_wb_quantum: data.nmid_wb_quantum || '—',
+    sku_ozon_asmus: data.sku_ozon_asmus || '—',
+    sku_ozon_quantum: data.sku_ozon_quantum || '—',
+    hasInci: !!(data.inci && String(data.inci).trim()),
+    inciPreview: data.inci ? String(data.inci).substring(0, 120) : '',
+    photosFolderId: data.photosFolderId || '',
+    photosFolderUrl: data.photosFolderUrl || '',
+    isSet: data.isSet || ''
+  };
+}
+
+/**
+ * Шаг 2: подтверждение → создание копии.
+ * @param {string} internalCode
+ * @return {Object}
+ */
+function createSkuCardFromMasterConfirmed_(internalCode) {
   try {
-    Logger.log('createSkuCardFromMasterServer_: ' + JSON.stringify(formData));
+    var code = String(internalCode || '').trim();
+    if (!code) return { success: false, error: 'Внутренний код не задан' };
 
-    var vendorCode = String(formData.vendorCode || '').trim();
-    var productName = String(formData.product_name || '').trim();
-    var categoryWb = String(formData.category_wb || '').trim();
-    if (!vendorCode) return { success: false, error: 'vendorCode обязателен' };
-    if (!productName) return { success: false, error: 'product_name обязателен' };
-    if (!categoryWb) return { success: false, error: 'category_wb обязателен' };
-
-    var categoryOzon = String(formData.category_ozon || '').trim();
-    if (!categoryOzon && typeof resolveOzonTemplateForWbCategory_ === 'function') {
-      var ozResolved = resolveOzonTemplateForWbCategory_(categoryWb);
-      categoryOzon = String(ozResolved.ozonCategory || '').trim();
+    var data = readShablonINCIByInternalCode_(code);
+    if (!data) {
+      return {
+        success: false,
+        error: 'SKU не найден в Шаблон_INCI_для_Маши, проверь код'
+      };
     }
 
-    var nmWbAsmus = String(formData.nmID_wb_asmus || '').trim();
-    var nmWbQuantum = String(formData.nmID_wb_quantum || '').trim();
-    var nmOzonAsmus = String(formData.nmID_ozon_asmus || '').trim();
-    var nmOzonQuantum = String(formData.nmID_ozon_quantum || '').trim();
-    var nmAny = nmWbAsmus || nmWbQuantum || nmOzonAsmus || nmOzonQuantum || vendorCode;
-
-    var genderMap = {
-      wb_asmus: String(formData.gender_wb_asmus || '').trim(),
-      wb_quantum: String(formData.gender_wb_quantum || '').trim(),
-      ozon_asmus: String(formData.gender_ozon_asmus || '').trim(),
-      ozon_quantum: String(formData.gender_ozon_quantum || '').trim()
-    };
-    ['wb_asmus', 'wb_quantum', 'ozon_asmus', 'ozon_quantum'].forEach(function(k) {
-      var v = genderMap[k];
-      if (v && ['ж', 'м', 'у'].indexOf(v) < 0) {
-        throw new Error('Недопустимый пол для ' + k + ': «' + v + '». Допустимо: ж, м, у.');
-      }
-    });
-
-    var masterId = String(getParam_('MASTER_TEMPLATE_ID', '') || '').trim() ||
-      MASTER_TEMPLATE_ID_DEFAULT_;
-    var folderId = String(getParam_('COPIES_FOLDER_ID', '') || '').trim() ||
-      COPIES_FOLDER_ID_DEFAULT_;
-    var copyName = generateCopyName_(productName, vendorCode, nmAny);
-
-    var copyFile = copyMasterSpreadsheetToFolder_(masterId, folderId, copyName);
-    var copyId = copyFile.getId();
-    Logger.log('createSkuCard: copyId=' + copyId + ' name=' + copyName);
-
-    var copySs = SpreadsheetApp.openById(copyId);
-    deleteDefaultBlankSheetInSpreadsheet_(copySs);
-
-    var cfg = copySs.getSheetByName('_Config');
-    if (!cfg) {
-      throw new Error('В копии нет листа _Config — проверьте шаблон мастера');
-    }
-
-    upsertConfigKey_(cfg, 'OUR_SKU', vendorCode, 'Артикул / vendorCode');
-    upsertConfigKey_(cfg, 'OUR_PRODUCT_NAME', productName, 'Название для имени файла');
-    upsertConfigKey_(cfg, 'CATEGORY_WB', categoryWb, 'Категория WB');
-    upsertConfigKey_(cfg, 'CATEGORY_OZON', categoryOzon, 'Категория Ozon');
-    upsertConfigKey_(cfg, 'NMID_WB_ASMUS', nmWbAsmus, 'nmID WB Асмус');
-    upsertConfigKey_(cfg, 'NMID_WB_QUANTUM', nmWbQuantum, 'nmID WB Quantum');
-    upsertConfigKey_(cfg, 'NMID_OZON_ASMUS', nmOzonAsmus, 'nmID Ozon Асмус');
-    upsertConfigKey_(cfg, 'NMID_OZON_QUANTUM', nmOzonQuantum, 'nmID Ozon Quantum');
-    upsertConfigKey_(cfg, 'GENDER_MAP_v1', JSON.stringify(genderMap), 'JSON пола по 4 ЛК');
-    upsertConfigKey_(cfg, 'ADVICE_SEO_SCHEMA_VERSION', CREATE_SKU_SCHEMA_VERSION_, '4-tab layout');
-
-    writeSeoSheetHeaderValues_(
-      copySs.getSheetByName('SEO_WB_Asmus'),
-      vendorCode,
-      nmWbAsmus || '<TBD>',
-      categoryWb,
-      'WB Асмус'
-    );
-    writeSeoSheetHeaderValues_(
-      copySs.getSheetByName('SEO_WB_Quantum'),
-      vendorCode,
-      nmWbQuantum || '<TBD>',
-      categoryWb,
-      'WB Quantum'
-    );
-    writeSeoSheetHeaderValues_(
-      copySs.getSheetByName('SEO_OZON_Asmus'),
-      vendorCode,
-      nmOzonAsmus || '<TBD>',
-      categoryOzon || '<TBD>',
-      'OZON Асмус'
-    );
-    writeSeoSheetHeaderValues_(
-      copySs.getSheetByName('SEO_OZON_Quantum'),
-      vendorCode,
-      nmOzonQuantum || '<TBD>',
-      categoryOzon || '<TBD>',
-      'OZON Quantum'
-    );
-
-    cfg.hideSheet();
-    Logger.log('createSkuCard: _Config hidden, SEO headers written');
-
-    var masterSs = getTargetSpreadsheet_();
-    appendSkuRegistryRow(masterSs, {
-      vendorCode: vendorCode,
-      product_name: productName,
-      category_wb: categoryWb,
-      category_ozon: categoryOzon,
-      nmID_wb_asmus: nmWbAsmus,
-      nmID_wb_quantum: nmWbQuantum,
-      nmID_ozon_asmus: nmOzonAsmus,
-      nmID_ozon_quantum: nmOzonQuantum,
-      sheet_id: copyId,
-      sheet_url: copyFile.getUrl(),
-      gender_map_json: JSON.stringify(genderMap),
-      created_at: new Date().toISOString(),
-      status: 'created'
-    });
-
-    var summary = 'OK vendorCode=' + vendorCode + ' url=' + copyFile.getUrl();
-    Logger.log(summary);
-    return { success: true, sheetUrl: copyFile.getUrl(), sheetId: copyId };
+    var result = createSkuCardFromMaster_(data);
+    return { success: true, sheetUrl: result.url, sheetId: result.id };
   } catch (e) {
-    Logger.log('createSkuCardFromMasterServer_ ERROR: ' + e.message);
+    Logger.log('createSkuCardFromMasterConfirmed_ ERROR: ' + e.message);
     return { success: false, error: e.message };
   }
 }
 
 /**
- * @param {string} masterId
- * @param {string} folderId
- * @param {string} copyName
- * @return {GoogleAppsScript.Drive.File}
+ * @param {Object} data from readShablonINCIByInternalCode_
+ * @return {{id: string, url: string, name: string}}
  */
+function createSkuCardFromMaster_(data) {
+  var code = String(data.internalCode || '').trim();
+  var name = String(data.name || '').trim() || code;
+  Logger.log('createSkuCardFromMaster_: ' + code + ' ' + name);
+
+  var masterId = String(getParam_('MASTER_TEMPLATE_ID', '') || '').trim() ||
+    MASTER_TEMPLATE_ID_DEFAULT_;
+  if (masterId === PGBOT1M08_REGRESSION_ID_) {
+    throw new Error('Запрещено копировать PGBOT1M08 (регрессионный baseline)');
+  }
+
+  var folderId = String(getParam_('COPIES_FOLDER_ID', '') || '').trim() ||
+    COPIES_FOLDER_ID_DEFAULT_;
+
+  var existing = findExistingCopyByInternalCode_(folderId, code);
+  if (existing) {
+    throw new Error(
+      'Карточка уже существует: ' + existing.name + '\n' + existing.url
+    );
+  }
+
+  var copyName = buildSkuCopyFileName_(name, code);
+  var copyFile = copyMasterSpreadsheetToFolder_(masterId, folderId, copyName);
+  var copyId = copyFile.getId();
+
+  if (copyId === PGBOT1M08_REGRESSION_ID_) {
+    throw new Error('Ошибка: попытка записи в PGBOT1M08 — операция отменена');
+  }
+
+  var copySs = SpreadsheetApp.openById(copyId);
+  deleteDefaultBlankSheetInSpreadsheet_(copySs);
+
+  var cfg = copySs.getSheetByName('_Config');
+  if (!cfg) {
+    throw new Error('В копии нет листа _Config — проверьте шаблон мастера');
+  }
+
+  writeSkuConfigFromInciData_(cfg, data);
+  cfg.hideSheet();
+
+  writeSeoHeadersFromInciData_(copySs, data);
+
+  try {
+    var masterSs = getTargetSpreadsheet_();
+    appendSkuRegistryRow(masterSs, {
+      vendorCode: code,
+      product_name: name,
+      category_wb: '',
+      category_ozon: '',
+      nmID_wb_asmus: data.nmid_wb_asmus,
+      nmID_wb_quantum: data.nmid_wb_quantum,
+      nmID_ozon_asmus: data.sku_ozon_asmus,
+      nmID_ozon_quantum: data.sku_ozon_quantum,
+      sheet_id: copyId,
+      sheet_url: copyFile.getUrl(),
+      gender_map_json: JSON.stringify({
+        wb_asmus: data.gender_wb_asmus,
+        wb_quantum: data.gender_wb_quantum,
+        ozon_asmus: data.gender_ozon_asmus,
+        ozon_quantum: data.gender_ozon_quantum
+      }),
+      created_at: new Date().toISOString(),
+      status: 'created'
+    });
+  } catch (regErr) {
+    Logger.log('createSkuCardFromMaster_: registry skip — ' + regErr.message);
+  }
+
+  var summary = 'OK ' + code + ' → ' + copyFile.getUrl();
+  Logger.log(summary);
+  return { id: copyId, url: copyFile.getUrl(), name: copyName };
+}
+
+/**
+ * @param {string} folderId
+ * @param {string} internalCode
+ * @return {{id: string, url: string, name: string}|null}
+ */
+function findExistingCopyByInternalCode_(folderId, internalCode) {
+  var code = String(internalCode || '').trim();
+  if (!code) return null;
+  var folder = DriveApp.getFolderById(folderId);
+  var files = folder.getFilesByType(MimeType.GOOGLE_SHEETS);
+  while (files.hasNext()) {
+    var f = files.next();
+    if (f.getId() === PGBOT1M08_REGRESSION_ID_) continue;
+    if (f.getName().indexOf(code) >= 0) {
+      return { id: f.getId(), url: f.getUrl(), name: f.getName() };
+    }
+  }
+  return null;
+}
+
+/**
+ * @param {string} productName
+ * @param {string} internalCode
+ * @return {string}
+ */
+function buildSkuCopyFileName_(productName, internalCode) {
+  var safeName = String(productName || '')
+    .replace(/[\\/?*\[\]:]/g, '')
+    .trim();
+  var code = String(internalCode || '').trim();
+  var base = 'SKU - ' + safeName;
+  if (code && base.indexOf(code) < 0) {
+    base += ' ' + code;
+  }
+  return base;
+}
+
+/**
+ * @param {GoogleAppsScript.Spreadsheet.Sheet} cfg
+ * @param {Object} data
+ */
+function writeSkuConfigFromInciData_(cfg, data) {
+  upsertConfigKey_(cfg, 'OUR_SKU', data.internalCode, 'Внутренний код 1С');
+  upsertConfigKey_(cfg, 'OUR_PRODUCT_NAME', data.name, 'Название');
+  upsertConfigKey_(cfg, 'NMID_WB_ASMUS', data.nmid_wb_asmus, 'nmID WB Асмус');
+  upsertConfigKey_(cfg, 'NMID_WB_QUANTUM', data.nmid_wb_quantum, 'nmID WB Quantum');
+  upsertConfigKey_(cfg, 'NMID_OZON_ASMUS', data.sku_ozon_asmus, 'SKU Ozon Асмус');
+  upsertConfigKey_(cfg, 'NMID_OZON_QUANTUM', data.sku_ozon_quantum, 'SKU Ozon Quantum');
+  upsertConfigKey_(cfg, 'GENDER_WB_ASMUS', data.gender_wb_asmus, 'Пол WB Асмус');
+  upsertConfigKey_(cfg, 'GENDER_WB_QUANTUM', data.gender_wb_quantum, 'Пол WB Quantum');
+  upsertConfigKey_(cfg, 'GENDER_OZON_ASMUS', data.gender_ozon_asmus, 'Пол Ozon Асмус');
+  upsertConfigKey_(cfg, 'GENDER_OZON_QUANTUM', data.gender_ozon_quantum, 'Пол Ozon Quantum');
+  upsertConfigKey_(cfg, 'BRAND', data.brand, 'Бренд');
+  upsertConfigKey_(cfg, 'NAME', data.name, 'Название товара');
+  upsertConfigKey_(cfg, 'INCI', data.inci, 'INCI');
+  upsertConfigKey_(cfg, 'FRAGRANCE_FAMILY', data.fragranceFamily, 'Семейство аромата');
+  upsertConfigKey_(cfg, 'TOP_NOTES', data.topNotes, 'Верхние ноты');
+  upsertConfigKey_(cfg, 'MID_NOTES', data.midNotes, 'Средние ноты');
+  upsertConfigKey_(cfg, 'BASE_NOTES', data.baseNotes, 'Базовые ноты');
+  upsertConfigKey_(cfg, 'IS_SET', data.isSet, 'Набор Y/N');
+  upsertConfigKey_(cfg, 'SET_COMPOSITION', data.setComposition, 'Состав набора');
+  upsertConfigKey_(cfg, 'PHOTOS_FOLDER_ID', data.photosFolderId, 'Папка SKU (Drive ID)');
+  upsertConfigKey_(cfg, 'GENDER_MAP_v1', JSON.stringify({
+    wb_asmus: data.gender_wb_asmus,
+    wb_quantum: data.gender_wb_quantum,
+    ozon_asmus: data.gender_ozon_asmus,
+    ozon_quantum: data.gender_ozon_quantum
+  }), 'JSON пола по 4 ЛК');
+  upsertConfigKey_(cfg, 'ADVICE_SEO_SCHEMA_VERSION', CREATE_SKU_SCHEMA_VERSION_, '4-tab layout');
+}
+
+/**
+ * @param {GoogleAppsScript.Spreadsheet.Spreadsheet} ss
+ * @param {Object} data
+ */
+function writeSeoHeadersFromInciData_(ss, data) {
+  writeSeoSheetHeaderValues_(
+    ss.getSheetByName('SEO_WB_Asmus'),
+    data.internalCode,
+    data.nmid_wb_asmus || '<TBD>',
+    '',
+    'WB Асмус'
+  );
+  writeSeoSheetHeaderValues_(
+    ss.getSheetByName('SEO_WB_Quantum'),
+    data.internalCode,
+    data.nmid_wb_quantum || '<TBD>',
+    '',
+    'WB Quantum'
+  );
+  writeSeoSheetHeaderValues_(
+    ss.getSheetByName('SEO_OZON_Asmus'),
+    data.internalCode,
+    data.sku_ozon_asmus || '<TBD>',
+    '',
+    'OZON Асмус'
+  );
+  writeSeoSheetHeaderValues_(
+    ss.getSheetByName('SEO_OZON_Quantum'),
+    data.internalCode,
+    data.sku_ozon_quantum || '<TBD>',
+    '',
+    'OZON Quantum'
+  );
+}
+
 function copyMasterSpreadsheetToFolder_(masterId, folderId, copyName) {
   try {
     var resource = {
@@ -182,19 +296,14 @@ function copyMasterSpreadsheetToFolder_(masterId, folderId, copyName) {
   }
 }
 
-/**
- * @param {GoogleAppsScript.Spreadsheet.Sheet|null} sh
- * @param {string} vendorCode
- * @param {string} nmID
- * @param {string} categoryLabel
- * @param {string} cabinetLabel
- */
 function writeSeoSheetHeaderValues_(sh, vendorCode, nmID, categoryLabel, cabinetLabel) {
   if (!sh) return;
   sh.getRange(1, 2).setValue(vendorCode);
   sh.getRange(2, 2).setValue(nmID || '<TBD>');
   sh.getRange(3, 2).setValue(cabinetLabel || '');
-  sh.getRange(5, 2).setValue(categoryLabel || '');
+  if (categoryLabel) {
+    sh.getRange(5, 2).setValue(categoryLabel);
+  }
 }
 
 function upsertConfigKey_(cfgSheet, key, value, description) {
@@ -203,7 +312,8 @@ function upsertConfigKey_(cfgSheet, key, value, description) {
     cfgSheet.appendRow([key, value, description]);
     return;
   }
-  var data = cfgSheet.getRange(2, 1, lr - 1, 2).getValues();
+  var numRows = lr - 1;
+  var data = cfgSheet.getRange(2, 1, numRows, 2).getValues();
   for (var i = 0; i < data.length; i++) {
     if (String(data[i][0]).trim() === key) {
       cfgSheet.getRange(i + 2, 2).setValue(value);
@@ -213,26 +323,6 @@ function upsertConfigKey_(cfgSheet, key, value, description) {
   cfgSheet.appendRow([key, value, description]);
 }
 
-/**
- * @param {string} productName
- * @param {string} vendorCode
- * @param {string} nmIdAny
- * @return {string}
- */
-function generateCopyName_(productName, vendorCode, nmIdAny) {
-  var safeProduct = String(productName || '').replace(/[\\/?*\[\]:]/g, '').trim();
-  var sku = String(vendorCode || '').trim();
-  var wbId = String(nmIdAny || sku).trim() || sku;
-  return COPY_NAME_TEMPLATE_
-    .replace('{product_name}', safeProduct)
-    .replace(/\{sku_code\}/g, sku)
-    .replace(/\{wb_id\}/g, wbId);
-}
-
-/**
- * Удаляет пустой лист Google по умолчанию после копирования мастера (≥1 других листов).
- * @param {GoogleAppsScript.Spreadsheet.Spreadsheet} ss
- */
 function deleteDefaultBlankSheetInSpreadsheet_(ss) {
   var defaultSheet = ss.getSheetByName('Лист1') || ss.getSheetByName('Sheet1');
   if (defaultSheet && ss.getSheets().length > 1) {
