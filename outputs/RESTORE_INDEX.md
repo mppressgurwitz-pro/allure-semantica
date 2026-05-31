@@ -69,9 +69,10 @@
 
 ## Git
 
-- **Commit:** `0577e3f` + fix WBSyncLib submodule → обычные файлы
-- **Remote GitHub:** `allure-semantica` (private) — создать: `gh repo create allure-semantica --private --source=. --push`
-- **Важно:** `.gitignore` игнорирует `**/*.js` (артефакты clasp pull); источник — `.gs`
+- **Локально:** 5 коммитов на `main` (последний — claspignore fix)
+- **Remote:** `origin` → `https://github.com/mppressgurwitz/allure-semantica.git`
+- **Push:** ждёт создания private repo на GitHub + авторизации (PAT или Git Credential Manager)
+- **`.claspignore`:** `WBSyncLib/`, `_СВЕЖАЯ_ВЕРСИЯ_v3/`, `_LEGACY_PGBOT1M08/` — `**/*.js` добавлен
 
 ---
 
