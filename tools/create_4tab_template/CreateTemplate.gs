@@ -24,6 +24,8 @@ function createTemplateSpreadsheet() {
   buildSeoOzonQuantum_(ss);
   buildKeywordsRaw_(ss);
 
+  deleteDefaultBlankSheet_(ss);
+
   DriveApp.getFileById(ss.getId()).addEditor(MASHA_EMAIL_);
   var url = ss.getUrl();
   Logger.log('Created: ' + url);
@@ -33,6 +35,16 @@ function createTemplateSpreadsheet() {
     // headless: clasp run / Execution API — URL только в Logger
   }
   return url;
+}
+
+/**
+ * Удаляет пустой лист по умолчанию (Лист1 / Sheet1) после создания целевых листов.
+ * Google не даёт удалить последний лист — вызывать только когда уже есть ≥1 другой лист.
+ * Паттерн переиспользуется при шитье шаблона в мастер-файл.
+ */
+function deleteDefaultBlankSheet_(ss) {
+  var defaultSheet = ss.getSheetByName('Лист1') || ss.getSheetByName('Sheet1');
+  if (defaultSheet) ss.deleteSheet(defaultSheet);
 }
 
 function buildConfigSheet_(ss) {
