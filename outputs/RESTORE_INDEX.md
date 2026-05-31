@@ -69,7 +69,9 @@
 
 ## Git
 
-`git init` + первый commit — см. корень проекта. Remote GitHub: `allure-semantica` (private) — создать вручную или через `gh repo create`.
+- **Commit:** `0577e3f` + fix WBSyncLib submodule → обычные файлы
+- **Remote GitHub:** `allure-semantica` (private) — создать: `gh repo create allure-semantica --private --source=. --push`
+- **Важно:** `.gitignore` игнорирует `**/*.js` (артефакты clasp pull); источник — `.gs`
 
 ---
 
