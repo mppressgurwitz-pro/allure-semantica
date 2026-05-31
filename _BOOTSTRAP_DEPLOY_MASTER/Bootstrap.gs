@@ -90,3 +90,5 @@ function processBulkInciFile(b, n)                { return WBLib.processBulkInci
 // === Trigger handlers ===
 function mgQueueWorker_trigger()        { WBLib.mgQueueWorker_trigger(); }
 function autoFlowClaudeWaiter_trigger() { WBLib.autoFlowClaudeWaiter_trigger(); }
+
+// injectTemplatesIntoMaster — см. InjectMasterTemplate.gs (Run из Apps Script Editor мастера)
