@@ -25,9 +25,14 @@ function createTemplateSpreadsheet() {
   buildKeywordsRaw_(ss);
 
   DriveApp.getFileById(ss.getId()).addEditor(MASHA_EMAIL_);
-  Logger.log('Created: ' + ss.getUrl());
-  SpreadsheetApp.getUi().alert('Готово', ss.getUrl(), SpreadsheetApp.getUi().ButtonSet.OK);
-  return ss.getUrl();
+  var url = ss.getUrl();
+  Logger.log('Created: ' + url);
+  try {
+    SpreadsheetApp.getUi().alert('Готово', url, SpreadsheetApp.getUi().ButtonSet.OK);
+  } catch (uiErr) {
+    // headless: clasp run / Execution API — URL только в Logger
+  }
+  return url;
 }
 
 function buildConfigSheet_(ss) {
@@ -62,7 +67,7 @@ function buildCommonSheet_(ss) {
   sh.getRange(1, 1, 1, 4).setValues([['Поле', 'Значение', 'Источник', 'Примечания']])
     .setFontWeight('bold').setBackground('#cfe2f3');
   var data = fields.map(function(f) { return [f, '', '', '']; });
-  sh.getRange(2, 1, 1 + data.length, 4).setValues(data);
+  sh.getRange(2, 1, data.length, 4).setValues(data);
   sh.setFrozenRows(1);
 }
 
@@ -118,11 +123,11 @@ function buildSeoSheet4Zones_(ss, sheetName, meta) {
     ['Лимиты', meta.limits]
   ]);
   styleZoneHeader_(sh, 10, '▼ PULL — текущие значения в WB');
-  sh.getRange(11, 1, 11, 3).setValues([['Поле', 'Значение в WB', 'Дата PULL']]).setFontWeight('bold');
+  sh.getRange(11, 1, 1, 3).setValues([['Поле', 'Значение в WB', 'Дата PULL']]).setFontWeight('bold');
   styleZoneHeader_(sh, 52, '▼ PUSH-черновик — что выгружаем');
-  sh.getRange(53, 1, 53, 4).setValues([['Поле', 'Новое значение', 'Источник', 'Валидация']]).setFontWeight('bold');
+  sh.getRange(53, 1, 1, 4).setValues([['Поле', 'Новое значение', 'Источник', 'Валидация']]).setFontWeight('bold');
   styleZoneHeader_(sh, 102, '▼ Семантика для этого кабинета');
-  sh.getRange(103, 1, 103, 5).setValues([['Ключ', 'Частота', 'Вес', 'Использован в Title?', 'Использован в Описании?']]).setFontWeight('bold');
+  sh.getRange(103, 1, 1, 5).setValues([['Ключ', 'Частота', 'Вес', 'Использован в Title?', 'Использован в Описании?']]).setFontWeight('bold');
   sh.setFrozenRows(1);
 }
 
