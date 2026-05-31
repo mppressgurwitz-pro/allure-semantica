@@ -2,3 +2,5 @@
 **/*.js
 !**/*.gs
 !appsscript.json
+!Apps Script.js
+!Bootstrap.js

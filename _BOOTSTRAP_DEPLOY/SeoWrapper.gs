@@ -10,7 +10,7 @@ function onOpenSeo_() {
       .addItem('Из Асмус', 'pullAsmus_')
       .addItem('Из Quantum', 'pullQuantum_'))
     .addSeparator()
-    .addItem('↻ Перенести SEO → тех.блок', 'transferSeo_')
+    .addItem('↻ Перенести SEO → тех.блок (вручную)', 'transferSeo_')
     .addItem('🧹 Очистить «Новое значение»', 'clearNew_')
     .addSeparator()
     .addSubMenu(ui.createMenu('📤 Выгрузить в WB')
@@ -22,12 +22,7 @@ function onOpenSeo_() {
     .addSeparator()
     .addItem('⚙️ Ozon (скоро)', 'ozonStub_')
     .addToUi();
-
-  try {
-    WBSyncLib.autoTransferSeoOnOpen(SpreadsheetApp.getActiveSpreadsheet());
-  } catch (err) {
-    Logger.log('autoTransferSeo: ' + err.message);
-  }
+  // D6: autoTransferSeoOnOpen отключён — перенос только по клику transferSeo_
 }
 
 function pullAsmus_() { WBSyncLib.pullFromAsmus(SpreadsheetApp.getActiveSpreadsheet()); }
